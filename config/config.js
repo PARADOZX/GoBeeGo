@@ -1,0 +1,1 @@
+module.exports.mongoURL = 'mongodb://' + process.env.IP + "/rprj1";
