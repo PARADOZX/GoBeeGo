@@ -10,6 +10,13 @@ export default class extends React.Component {
     componentWillMount(){
        
     }
+    componentDidMount(){
+        //check if html5 geolocation exists 
+        if(!navigator.geolocation){
+            alert("Geolocation is not supported by this browser.");
+            //Something here to redirect out of app.
+        }
+    }
     render() {
         return (
             <div>

@@ -2,21 +2,21 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, HashRouter, Route, Link } from "react-router-dom";
 import { Redirect } from 'react-router';
-import Register from './Register';
-import Home from './Home';
+
 import Login from './Login';
+import Register from './Register';
 import Dashboard from './Dashboard';
+import Home from './Home';
+import Yelp from './Yelp';
 
 import * as AuthActions from "./actions/AuthActions";
 import AuthCtrl from './stores/AuthCtrl';
 import Routes from './Routes';
 import Layout from './Layout';
 import LayoutWithNav from './LayoutWithNav';
-import LayoutNoNav from './LayoutNoNav';
 
 
-
-//ApppInner created so there can be a nav and no nav layout
+//AppInner created so there can be a nav and no nav layout
 export default class extends React.Component {
     constructor()
     {
@@ -105,6 +105,7 @@ export default class extends React.Component {
                     }
                 }
                 />
+                <Route exact path="/yelp" component={Yelp} />
             </LayoutWithNav>
         )
 

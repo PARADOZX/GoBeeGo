@@ -8,6 +8,7 @@ const mongoose = require('mongoose');
 const User = require('./models/User');
 const url = require('../config/config.js').mongoURL;
 const authRoutes = require('./routes/auth');
+const yelpRoutes = require('./routes/yelpRoutes');
 var bodyParser = require('body-parser');
 
 const app = express();
@@ -38,6 +39,7 @@ mongoose.connect(url, function(err, db){
 });
 
 app.use('/auth', authRoutes);
+app.use('/yelpRoutes', yelpRoutes);
 
 //port 8080
 app.listen(process.env.PORT, null, null, ()=> {console.log(process.env.PORT)})

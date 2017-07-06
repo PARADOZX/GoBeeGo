@@ -24,7 +24,7 @@ export default class extends React.Component {
                             <Link className="nav-link" to="/home">Home</Link>
                           </li>
                           <li className="nav-item">
-                            <Link className="nav-link" to="/archive">Archive</Link>
+                            <Link className="nav-link" to="/yelp">Yelp</Link>
                           </li>
                           <li className="nav-item">
                             <Link className="nav-link" to="/about">About</Link>

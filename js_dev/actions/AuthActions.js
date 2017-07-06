@@ -50,41 +50,6 @@ export function registerUser(user) {
         })
 }
 
-
-export function addArticle(newArticle) {
-    dispatcher.dispatch({
-        type: "CREATE_ARTICLE",
-        newArticle
-    })
-}
-
-export function reloadArticles() {
-    dispatcher.dispatch({
-        type: "FETCH_ARTICLES"
-    })
-    setTimeout(()=>{
-        dispatcher.dispatch({
-            type: "RECEIVE_ARTICLES", 
-            articles: [
-                {
-                    id : 1494681246405,
-                    name : "Article Four",
-                    content : "This is some content."
-                },
-                {
-                     id : 1494681246412,
-                    name : "Article Five",
-                    content : "This is some more content."
-                },
-                {
-                     id : 1494681246331,
-                    name : "Article Six",
-                    content : "This is some kick ass content."
-                }
-        ]})
-    }, 1000)
-}
-
 export function logOut() {
     
     axios.post('/auth/logout')
