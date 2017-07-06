@@ -16,5 +16,7 @@ exports.autocompleteGen = function(req, res){
     request(options, function (error, response, body) {
         if(error == null)
             res.send(body);    
+        else 
+            console.log(error);
     });
 };
