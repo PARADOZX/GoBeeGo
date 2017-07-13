@@ -20,3 +20,24 @@ exports.autocompleteGen = function(req, res){
             console.log(error);
     });
 };
+
+exports.searchByKeyword = function(req, res){
+    const options = {
+      url: 'https://api.yelp.com/v3/businesses/search?term=' + req.query.search + "&latitude=" + req.query.lat + "&longitude=" + req.query.long,
+      headers: {
+        'Authorization': 'Bearer ' + config.yelp.ACCESS_TOKEN
+      }
+    };
+    
+    request(options, function (error, response, response) {
+        if(error == null) 
+        {
+            const json_resp = JSON.parse(response);
+            res.send(json_resp.businesses);    
+        }
+        else 
+        {
+            console.log(error);
+        }
+    });
+}

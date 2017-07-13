@@ -7,9 +7,6 @@ export default class extends React.Component {
             return (
                 <div>
                     <Nav logged={this.props.logged}></Nav>
-                    <div className="container">
-                    {this.props.children}
-                    </div>
                 </div>
             );    
     }

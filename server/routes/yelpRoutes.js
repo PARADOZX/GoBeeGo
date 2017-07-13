@@ -7,5 +7,6 @@ router.get('/testAPI', yelpController.testAPI)
 
 router.get('/autocomplete', yelpController.autocompleteGen);
 
+router.get('/searchByKeyword', yelpController.searchByKeyword);
 
 module.exports = router;

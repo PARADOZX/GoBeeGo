@@ -26,7 +26,7 @@ class AuthCtrl extends EventEmitter {
         this.emit("log_in_fail");
     }
     handleActions(action){
-        console.log(action);
+        // console.log(action);
         switch(action.type)
         {
             case "REGISTERED": {

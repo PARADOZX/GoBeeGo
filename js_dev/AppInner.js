@@ -8,6 +8,8 @@ import Register from './Register';
 import Dashboard from './Dashboard';
 import Home from './Home';
 import Yelp from './Yelp';
+import BusinessResults from './BusinessResults';
+import Plan from './Plan';
 
 import * as AuthActions from "./actions/AuthActions";
 import AuthCtrl from './stores/AuthCtrl';
@@ -58,56 +60,45 @@ export default class extends React.Component {
     }
     
     render(){
-        // if(this.state.loggedIn){
-        //     return (
-        //         <LayoutWithNav>
-        //             <Routes />
-        //         </LayoutWithNav>
-        //     );    
-        // } else {
-        //     return (
-        //       <LayoutNoNav>
-        //             <Route exact path="/" component={Login} />
-        //             <Route exact path="/register" component={Register} />
-        //             <Route path="/archive" component={Login} />
-        //       </LayoutNoNav>
-        //     );  
-            
-        // }
-        
+    
         var {loggedIn} = this.state;
         console.log("is logged in: " + loggedIn);
         return (
-            <LayoutWithNav logged={loggedIn}>
-                <Route exact path="/" render={ () => {
-                        if(loggedIn)
-                        {
-                            return <Redirect to='/home'/>
-                            
-                        } 
-                        else 
-                        {
-                            return <Login />
+            <Router>
+                <div>
+                    <LayoutWithNav logged={loggedIn}></LayoutWithNav>
+                    <Route exact path="/" render={ () => {
+                            if(loggedIn)
+                            {
+                                return <Redirect to='/home'/>
+                            } 
+                            else 
+                            {
+                                return <Login />
+                            }
                         }
                     }
-                }
-                />
-                <Route exact path="/register" component={Register} />
-                <Route exact path="/home" render={ () => {
-                        if(loggedIn)
-                        {
-                            return <Dashboard />
-                        } 
-                        else 
-                        {
-                            return <Redirect to='/'/>
+                    />
+                    <Route path="/register" component={Register} />
+                    <Route path="/home" render={ () => {
+                            if(loggedIn)
+                            {
+                                return <Dashboard />
+                            } 
+                            else 
+                            {
+                                return <Redirect to='/'/>
+                            }
                         }
                     }
-                }
-                />
-                <Route exact path="/yelp" component={Yelp} />
-            </LayoutWithNav>
+                    />
+                    <Route path="/yelp" component={Yelp} />
+                    <Route path="/businessResults" component={BusinessResults} />
+                    <Route path="/plan" component={Plan} />
+                </div>
+            </Router>
         )
 
     }
 }
+

@@ -10,26 +10,8 @@ import Archive from './Archive';
 
 const content = document.getElementById('content');
 
-// ReactDOM.render((
-//     <Router>
-//         <div>
-//             <Layout>
-//                 <Route exact path="/" component={Home} />
-//                 <Route exact path="/register" component={Register} />
-//                 <Route exact path="/login" component={Login} />
-//                 <Route exact path="/archive" component={Archive} />
-//             </Layout>
-//         </div>
-//     </Router>)
-// , content);
-
-
 ReactDOM.render((
-    <Router>
-        <div>
-            <AppInner />
-        </div>
-    </Router>)
+        <AppInner />)
 , content);
 
 

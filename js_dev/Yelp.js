@@ -1,11 +1,11 @@
 import React from 'react';
 import * as YelpActions from "./actions/YelpActions";
 import YelpCtrl from "./stores/YelpCtrl";
+import Autosuggest from "./Autosuggest";
 
 export default class extends React.Component {
     constructor()
     {
-      
         super();
         
         this.state = {
@@ -19,7 +19,14 @@ export default class extends React.Component {
     }
     componentWillMount()
     {
-        
+        var that = this;
+        YelpCtrl.on("change", ()=>{
+            // this.setState({
+            //     articles : ArticleStore.getAll()
+            // });
+            // console.log(YelpCtrl.getAllBusinesses());
+            this.props.history.push('/businessResults');
+        });
     }
     componentDidMount() {
         var that = this;
@@ -51,7 +58,13 @@ export default class extends React.Component {
     }
     searchYelp()
     {
-        YelpActions.searchYelp(this.state.search1);
+        let tempSearchArr = [];
+        
+        if(this.state.search1 !== "") tempSearchArr.push(this.state.search1);
+        if(this.state.search2 !== "") tempSearchArr.push(this.state.search2);
+        if(this.state.search3 !== "") tempSearchArr.push(this.state.search3);
+        
+        YelpActions.searchBusinessByKeyword(tempSearchArr, this.coords);
     }
     autocompleteGen(event)
     {
@@ -89,16 +102,41 @@ export default class extends React.Component {
         const suggestionsList1 = suggestions1.map((sugg, i)=><option key={i} value={sugg}/>);
         const suggestionsList2 = suggestions2.map((sugg, i)=><option key={i} value={sugg}/>);
         const suggestionsList3 = suggestions3.map((sugg, i)=><option key={i} value={sugg}/>);
-        
+    
         return (
             <div>
                 <h3>Yelp API Test</h3>
-                <input type="text" list="suggestions1" onChange={this.onHandleChange.bind(this)} onKeyUp={this.autocompleteGen.bind(this)} value={this.state.search1} name="search1" />
+                <Autosuggest 
+                    suggestions={suggestionsList1} 
+                    listName="suggestions1" 
+                    onChangeHandler={this.onHandleChange.bind(this)} 
+                    onKeyUpHandler={this.autocompleteGen.bind(this)} 
+                    val={this.state.search1} 
+                    nameVal="search1" />
+                    
+                <Autosuggest 
+                    suggestions={suggestionsList2} 
+                    listName="suggestions2" 
+                    onChangeHandler={this.onHandleChange.bind(this)} 
+                    onKeyUpHandler={this.autocompleteGen.bind(this)} 
+                    val={this.state.search2} 
+                    nameVal="search2" />
+                    
+                <Autosuggest 
+                    suggestions={suggestionsList3} 
+                    listName="suggestions3" 
+                    onChangeHandler={this.onHandleChange.bind(this)} 
+                    onKeyUpHandler={this.autocompleteGen.bind(this)} 
+                    val={this.state.search3} 
+                    nameVal="search3" />
+                    
+                {/*<input type="text" list="suggestions1" onChange={this.onHandleChange.bind(this)} onKeyUp={this.autocompleteGen.bind(this)} value={this.state.search1} name="search1" />
                 <datalist id="suggestions1">{suggestionsList1}</datalist>
                 <input type="text" list="suggestions2" onChange={this.onHandleChange.bind(this)} onKeyUp={this.autocompleteGen.bind(this)} value={this.state.search2} name="search2" />
                 <datalist id="suggestions2">{suggestionsList2}</datalist>
                 <input type="text" list="suggestions3" onChange={this.onHandleChange.bind(this)} onKeyUp={this.autocompleteGen.bind(this)} value={this.state.search3} name="search3" />
-                <datalist id="suggestions3">{suggestionsList3}</datalist>
+                <datalist id="suggestions3">{suggestionsList3}</datalist>*/}
+                
                 <button onClick={this.searchYelp.bind(this)}>Search</button>
             </div>
         )

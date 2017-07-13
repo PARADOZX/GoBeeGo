@@ -4,17 +4,36 @@ import dispatcher from '../dispatcher';
 class YelpCtrl extends EventEmitter {
     constructor() {
         super();
-    }
-    yelpAutoComplete(action)
-    {
         
+        this.businesses = [];
+    }
+    receiveBusinesses(action)
+    {
+        //reset results
+        this.businesses = [];
+        
+        for(let result in action)
+        {
+            if(result !== "type") {
+                this.businesses.push(action[result]);
+            }
+        }
+        this.emit("change");
+    }
+    getAllBusinesses()
+    {
+        return this.businesses;
     }
     handleActions(action){
      
         switch(action.type)
         {
-            case "YELP_AUTOCOMPLETE_GEN": {
-                this.yelpAutoComplete(action);
+            // case "YELP_BUSINESS_BY_KEYWORD_RESULTS": {
+            //     this.addBusinessesSearchedByKeyword(action);
+            //     break;
+            // }
+            case "YELP_BUSINESS_RESULTS": {
+                this.receiveBusinesses(action);
                 break;
             }
         }
