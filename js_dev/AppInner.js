@@ -67,34 +67,36 @@ export default class extends React.Component {
             <Router>
                 <div>
                     <LayoutWithNav logged={loggedIn}></LayoutWithNav>
-                    <Route exact path="/" render={ () => {
-                            if(loggedIn)
-                            {
-                                return <Redirect to='/home'/>
-                            } 
-                            else 
-                            {
-                                return <Login />
+                    <div className="container">
+                        <Route exact path="/" render={ () => {
+                                if(loggedIn)
+                                {
+                                    return <Redirect to='/home'/>
+                                } 
+                                else 
+                                {
+                                    return <Login />
+                                }
                             }
                         }
-                    }
-                    />
-                    <Route path="/register" component={Register} />
-                    <Route path="/home" render={ () => {
-                            if(loggedIn)
-                            {
-                                return <Dashboard />
-                            } 
-                            else 
-                            {
-                                return <Redirect to='/'/>
+                        />
+                        <Route path="/register" component={Register} />
+                        <Route path="/home" render={ () => {
+                                if(loggedIn)
+                                {
+                                    return <Dashboard />
+                                } 
+                                else 
+                                {
+                                    return <Redirect to='/'/>
+                                }
                             }
                         }
-                    }
-                    />
-                    <Route path="/yelp" component={Yelp} />
-                    <Route path="/businessResults" component={BusinessResults} />
-                    <Route path="/plan" component={Plan} />
+                        />
+                        <Route path="/yelp" component={Yelp} />
+                        <Route path="/businessResults" component={BusinessResults} />
+                        <Route path="/plan" component={Plan} />
+                    </div>
                 </div>
             </Router>
         )

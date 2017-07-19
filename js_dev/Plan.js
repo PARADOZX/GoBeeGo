@@ -28,7 +28,7 @@ export default class extends React.Component {
     render(){
         return (
             <div>
-                <h3>This is the plan.</h3>
+                <p className="page-title">Add Destination</p>
                 <SearchPage coordinates={this.coords}/>
                 <Link to="/plan/somewhere">Somewhere</Link>
                 <Route path="/plan/somewhere" render={() => (

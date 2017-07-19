@@ -20,13 +20,7 @@ export default class extends React.Component {
     componentWillMount()
     {
         var that = this;
-        YelpCtrl.on("change", ()=>{
-            // this.setState({
-            //     articles : ArticleStore.getAll()
-            // });
-            // console.log(YelpCtrl.getAllBusinesses());
-            this.props.history.push('/businessResults');
-        });
+        YelpCtrl.on("change", that.receiveResultsCallBack);
     }
     componentDidMount() {
         var that = this;
@@ -39,6 +33,19 @@ export default class extends React.Component {
             alert("Geolocation is not supported by this browser.");
             //Something here to redirect out of app.
         }
+    }
+    receiveResultsCallBack()
+    {
+         // this.setState({
+            //     articles : ArticleStore.getAll()
+            // });
+            // console.log(YelpCtrl.getAllBusinesses());
+            this.props.history.push('/businessResults');
+    }
+    componentWillUnmount()
+    {
+        var that = this;
+        YelpCtrl.removeListener("change", this.receiveResultsCallBack);
     }
     onHandleChange(event)
     {

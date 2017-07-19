@@ -2,6 +2,10 @@ import React from 'react';
 import * as YelpActions from "./actions/YelpActions";
 import YelpCtrl from "./stores/YelpCtrl";
 import Autosuggest from "./Autosuggest";
+import SearchResult from "./SearchResult";
+import * as BAL from "./bal/BAL";
+
+let receiveResultsCallBackRef = null;
 
 export default class extends React.Component {
     constructor()
@@ -10,19 +14,46 @@ export default class extends React.Component {
         
         this.state = {
             search : "",
-            suggestions : []
+            suggestions : [],
+            results : [],
+            resultFilter : 0
         };
+        
+        //assign to a variable b/c a new function reference is created after .bind() is called
+        //this allows the removeListener to work
+        receiveResultsCallBackRef = this.receiveResultsCallBack.bind(this);
     }
     componentWillMount()
     {
         var that = this;
-        YelpCtrl.on("change", ()=>{
-            // this.setState({
-            //     articles : ArticleStore.getAll()
-            // });
-            console.log(YelpCtrl.getAllBusinesses());
-            // this.props.history.push('/businessResults');
+        // YelpCtrl.on("change", ()=>{
+        //     const response = YelpCtrl.getAllBusinesses();
+        //     const parsedResults = response[0][0].data;
+            
+        //     this.setState({
+        //         results : parsedResults
+        //     });
           
+        // });
+        
+        YelpCtrl.on("change", receiveResultsCallBackRef);
+    }
+    componentWillUnmount() {
+        YelpCtrl.removeListener("change", receiveResultsCallBackRef);
+    }
+    receiveResultsCallBack()
+    {
+        const response = YelpCtrl.getAllBusinesses();
+        const parsedResults = response[0][0].data;
+        
+        // console.log(parsedResults);
+        // for (let i in parsedResults)
+        // {
+        //     console.log(parsedResults[i].coordinates);
+        // }
+            
+        this.setState({
+            results : parsedResults
         });
     }
     onHandleChange(event)
@@ -34,6 +65,48 @@ export default class extends React.Component {
         this.setState({
           [name]: value
         });
+    }
+    applyResultFilter()
+    {
+        const {resultFilter} = this.state;
+        
+        switch(resultFilter){
+            case "0":
+                this.filterResultsByName();
+                break;
+            case "1":
+                this.filterResultsByRating();
+                break;
+            case "2": 
+                this.filterResultsByDistance();
+                break;
+            default: 
+                this.filterResultsByName();
+        }
+    }
+    filterResultsByName(){
+        this.state.results.sort(function(a, b){
+            if(a.name < b.name) return -1;
+            if(a.name > b.name) return 1;
+            return 0;
+        })
+    }
+    filterResultsByRating()
+    {
+        this.state.results.sort(function(a, b) {
+            return a.rating - b.rating;
+        });
+    }
+    filterResultsByDistance()
+    {
+        this.state.results.sort(function(a, b) {
+            return a.distance - b.distance;
+        });
+        // console.log(this.state.results);
+    }
+    filterChange(event)
+    {
+        this.setState({resultFilter:event.target.value});
     }
     searchYelp()
     {
@@ -72,23 +145,46 @@ export default class extends React.Component {
                 console.log(error);
             })
     }
-    
     render(){
-        const {suggestions} = this.state;
+        this.applyResultFilter();
         
+        const {suggestions} = this.state;
+        const {results} = this.state;
+     
         const suggestionsList = suggestions.map((sugg, i)=><option key={i} value={sugg}/>);
-    
+        const resultsList = results.map((r, i) => 
+            <SearchResult 
+                key={i} 
+                street={r.location.address1 + " " + r.location.address2 + " " + r.location.address3}
+                city={r.location.city}
+                state={r.location.state}
+                zip={r.location.zip_code}
+                name={r.name} 
+                rating={r.rating}
+                phone={r.phone}
+                imgurl = {r.image_url}
+            />);
+        
         return (
             <div>
-                <h3>Search For: </h3>
-                <Autosuggest 
-                    suggestions={suggestionsList} 
-                    listName="suggestions" 
-                    onChangeHandler={this.onHandleChange.bind(this)} 
-                    onKeyUpHandler={this.autocompleteGen.bind(this)} 
-                    val={this.state.search} 
-                    nameVal="search" />
-                <button onClick={this.searchYelp.bind(this)}>Search</button>
+                <section className="mb-3">
+                    <Autosuggest 
+                        suggestions={suggestionsList} 
+                        listName="suggestions" 
+                        onChangeHandler={this.onHandleChange.bind(this)} 
+                        onKeyUpHandler={this.autocompleteGen.bind(this)} 
+                        val={this.state.search} 
+                        nameVal="search" />
+                    <button onClick={this.searchYelp.bind(this)}>Search</button>
+                    <select value={this.state.resultFilter} onChange={this.filterChange.bind(this)}>
+                        <option value="0">Name</option>
+                        <option value="1">Rating</option>
+                        <option value="2">Distance</option>
+                    </select>
+                </section>
+                <div className="row">
+                {resultsList}
+                </div>
             </div>
         )
     }
