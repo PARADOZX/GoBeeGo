@@ -31,10 +31,10 @@ export default class extends React.Component {
         
         //log out button change emit receiver
         AuthCtrl.on("change", (err)=>{
+            
             this.setState({
                 loggedIn : false
             });
-            
         })
         
         AuthCtrl.on("logged_in", (err)=>{
@@ -58,11 +58,11 @@ export default class extends React.Component {
             }   
         })
     }
-    
     render(){
     
         var {loggedIn} = this.state;
-        console.log("is logged in: " + loggedIn);
+        
+        // console.log("is logged in: " + loggedIn);
         return (
             <Router>
                 <div>
@@ -95,7 +95,19 @@ export default class extends React.Component {
                         />
                         <Route path="/yelp" component={Yelp} />
                         <Route path="/businessResults" component={BusinessResults} />
-                        <Route path="/plan" component={Plan} />
+                        {/*<Route path="/plan" component={Plan} />*/}
+                        <Route path="/plan" render={ () => {
+                                if(loggedIn)
+                                {
+                                    return <Plan />
+                                } 
+                                else 
+                                {
+                                    return <Login />
+                                }
+                            }
+                        }
+                        />
                     </div>
                 </div>
             </Router>

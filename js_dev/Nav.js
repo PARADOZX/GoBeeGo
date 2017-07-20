@@ -1,9 +1,17 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import * as AuthActions from "./actions/AuthActions";
-
+import AuthCtrl from './stores/AuthCtrl';
 
 export default class extends React.Component {
+    constructor()
+    {
+      super()
+    }
+    logOut()
+    {
+      AuthActions.logOut();
+    }
     render(){
       
         const {logged} = this.props;
@@ -42,7 +50,7 @@ export default class extends React.Component {
                       logged
                       ? <ul className="nav navbar-nav" style={{float: "right"}}>
                           <li>
-                            <button type="button" onClick={AuthActions.logOut}>Logout</button>
+                            <button type="button" onClick={this.logOut.bind(this)}>Logout</button>
                           </li>
                         </ul>
                       : null

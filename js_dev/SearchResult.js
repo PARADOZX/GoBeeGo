@@ -1,4 +1,7 @@
 import React from 'react';
+import YelpCtrl from "./stores/YelpCtrl";
+import * as YelpActions from "./actions/YelpActions";
+import ReactDOM from 'react-dom';
 
 export default class extends React.Component {
     constructor()
@@ -10,17 +13,22 @@ export default class extends React.Component {
     componentWillMount()
     {
         var that = this;
+        
         window.onresize = function(){
-            console.log('resized!');
             that.dynamicSetImgHeightResize();
-            that.dynamicSetResultsCtrlsMarginResize();
+            // that.dynamicSetResultsCtrlsMarginResize();
         };
+        
+        // YelpCtrl.on("sort", function(){
+        //     that.dynamicSetImgHeightInit();
+        //     // that.dynamicSetResultsCtrlsMarginInit();
+        // });
     }
     componentDidMount()
     {
         const images = document.getElementsByClassName('result-icon');
         this.dynamicSetImgHeightInit();
-        this.dynamicSetResultsCtrlsMarginInit();
+        // this.dynamicSetResultsCtrlsMarginInit();
     }
     onHandleChange(event)
     {
@@ -35,8 +43,11 @@ export default class extends React.Component {
     dynamicSetImgHeightInit()
     {
         const img = this.refs.resultIcon;
-        const width = img.offsetWidth;
-        img.style.maxHeight = width + 'px';
+        if(img !== undefined)
+        {
+            const width = img.offsetWidth;
+            img.style.maxHeight = width + 'px';
+        }
     }
     dynamicSetImgHeightResize()
     {
@@ -54,6 +65,8 @@ export default class extends React.Component {
         const stars = this.refs.starsblock;
         const resultsCtrl = this.refs.resultsCtrlblock;
         
+        // resultsCtrl.style.marginTop = "0px";
+    
         const card_padding = 20;
         const card_height = card.offsetHeight;
         const title_height = title.offsetHeight;
@@ -62,6 +75,16 @@ export default class extends React.Component {
         
         const diff = card_height - (card_padding*2) - title_height - stars_height - resultCtrls_height;
       
+        // var obj = {
+        //      card_padding :20,
+        //      card_height : card.offsetHeight,
+        //      title_height : title.offsetHeight,
+        //      stars_height : stars.offsetHeight,
+        //      resultCtrls_height : 37,
+        //      diff : diff
+        // };
+        // console.log(obj);
+        
         resultsCtrl.style.marginTop = diff + "px";
     }
     //resizing window references the rendered DOM just once so only way to get a reference to each card element is to 
@@ -84,10 +107,18 @@ export default class extends React.Component {
             card.querySelector('#resultsCtrlblock').style.marginTop = diff + "px";
         });
     }
+    getResultDetails()
+    {
+        YelpActions.getBusinessDetailsAndReviews(this.props.id);
+    }
     render(){
         const stars_img_path = "/img/small_" + this.props.rating + ".png";
         
         const bottom_margin = '20px';
+        
+        const cntr_style = {
+            borderColor : 'rgb(214, 214, 214)'    
+        };
         
         const card_block_style = {
             // position : 'relative'  
@@ -113,7 +144,7 @@ export default class extends React.Component {
         };
         
         return (
-            <div className="col-lg-4 col-sm-6 card card-outline-primary mb-3">
+            <div style={cntr_style} className="col-lg-4 col-sm-6 card">
                 <div ref="cardblock" data-id={this.props.name} style={card_block_style} className="card-block">
                     <div ref="titleblock" id="titleblock" className="row">
                         <div className="col-8">
@@ -126,7 +157,7 @@ export default class extends React.Component {
                         <img style={stars_style} src={stars_img_path} />
                     </div>
                     <div ref="resultsCtrlblock" id="resultsCtrlblock" style={result_ctrls_style}>
-                        <button className="btn btn-md btn-primary">Details</button>
+                        <button onClick={this.getResultDetails.bind(this)} className="btn btn-md btn-primary">Details</button>
                     </div>
                 </div>
             </div>

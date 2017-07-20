@@ -26,15 +26,6 @@ export default class extends React.Component {
     componentWillMount()
     {
         var that = this;
-        // YelpCtrl.on("change", ()=>{
-        //     const response = YelpCtrl.getAllBusinesses();
-        //     const parsedResults = response[0][0].data;
-            
-        //     this.setState({
-        //         results : parsedResults
-        //     });
-          
-        // });
         
         YelpCtrl.on("change", receiveResultsCallBackRef);
     }
@@ -45,13 +36,7 @@ export default class extends React.Component {
     {
         const response = YelpCtrl.getAllBusinesses();
         const parsedResults = response[0][0].data;
-        
-        // console.log(parsedResults);
-        // for (let i in parsedResults)
-        // {
-        //     console.log(parsedResults[i].coordinates);
-        // }
-            
+      console.log(parsedResults);
         this.setState({
             results : parsedResults
         });
@@ -83,6 +68,9 @@ export default class extends React.Component {
             default: 
                 this.filterResultsByName();
         }
+        setTimeout(function(){
+            YelpActions.sortBusinessResults();
+        }, 0);
     }
     filterResultsByName(){
         this.state.results.sort(function(a, b){
@@ -163,6 +151,7 @@ export default class extends React.Component {
                 rating={r.rating}
                 phone={r.phone}
                 imgurl = {r.image_url}
+                id = {r.id}
             />);
         
         return (

@@ -6,6 +6,7 @@ class YelpCtrl extends EventEmitter {
         super();
         
         this.businesses = [];
+        this.businessDetailsAndReviews = [];
     }
     receiveBusinesses(action)
     {
@@ -20,9 +21,23 @@ class YelpCtrl extends EventEmitter {
         }
         this.emit("change");
     }
+    receiveBusinessDetailsReviews(action)
+    {
+        //reset results
+        this.businessDetailsAndReviews = [];
+        
+        this.businessDetailsAndReviews.details = action.response.details;
+        this.businessDetailsAndReviews.reviews = action.response.reviews;
+        
+        this.emit("detailsAndReviews");
+    }
     getAllBusinesses()
     {
         return this.businesses;
+    }
+    businessSort()
+    {
+        this.emit("sort");
     }
     handleActions(action){
      
@@ -34,6 +49,14 @@ class YelpCtrl extends EventEmitter {
             // }
             case "YELP_BUSINESS_RESULTS": {
                 this.receiveBusinesses(action);
+                break;
+            }
+            case "YELP_BUSINESS_RESULTS_SORT": {
+                this.businessSort();
+                break;
+            }
+            case "YELP_BUSINESS_DETAILS_REVIEWS": {
+                this.receiveBusinessDetailsReviews(action);
                 break;
             }
         }

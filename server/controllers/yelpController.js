@@ -41,3 +41,45 @@ exports.searchByKeyword = function(req, res){
         }
     });
 }
+
+exports.businessDetails = function(req, res) {
+    const options = {
+      url: 'https://api.yelp.com/v3/businesses/' + req.query.id,
+      headers: {
+        'Authorization': 'Bearer ' + config.yelp.ACCESS_TOKEN
+      }
+    };
+    
+    request(options, function (error, response, response) {
+        if(error == null) 
+        {
+            const json_resp = JSON.parse(response);
+            res.send(json_resp);    
+        }
+        else 
+        {
+            console.log(error);
+        }
+    });
+}
+
+exports.businessReviews = function(req, res) {
+    const options = {
+      url: 'https://api.yelp.com/v3/businesses/' + req.query.id + '/reviews',
+      headers: {
+        'Authorization': 'Bearer ' + config.yelp.ACCESS_TOKEN
+      }
+    };
+    
+    request(options, function (error, response, response) {
+        if(error == null) 
+        {
+            const json_resp = JSON.parse(response);
+            res.send(json_resp);    
+        }
+        else 
+        {
+            console.log(error);
+        }
+    });
+}
