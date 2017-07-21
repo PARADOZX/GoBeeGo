@@ -1,12 +1,22 @@
 import React from 'react';
 import { BrowserRouter as Router, HashRouter, Route, Link } from "react-router-dom";
 import SearchPage from './SearchPage';
+import PlanStore from "./stores/PlanStore";
 
 export default class extends React.Component {
     constructor() {
         super();
-        this.state = {};
+        this.state = {
+            destinations : []
+        };
         this.coords = {};
+    }
+    componentWillMount()
+    {
+        this.setState(
+            {
+                destinations : PlanStore.getDestinations()
+            })
     }
     componentDidMount() {
         var that = this;
@@ -26,6 +36,7 @@ export default class extends React.Component {
         this.coords.longitude = long;
     }
     render(){
+        const {destinations} = this.state;
         return (
             <div>
                 <p className="page-title">Add Destination</p>
@@ -34,6 +45,7 @@ export default class extends React.Component {
                 <Route path="/plan/somewhere" render={() => (
                   <h3>Please select a topic.</h3>
                 )} />
+                {destinations}
             </div>
         )
     }

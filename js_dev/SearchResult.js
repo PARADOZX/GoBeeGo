@@ -1,13 +1,15 @@
 import React from 'react';
 import YelpCtrl from "./stores/YelpCtrl";
 import * as YelpActions from "./actions/YelpActions";
+import * as AppActions from "./actions/AppActions";
 import ReactDOM from 'react-dom';
 import {Link} from "react-router-dom";
+import {withRouter} from "react-router-dom";
 
-export default class extends React.Component {
-    constructor()
+class SearchResult extends React.Component {
+    constructor(props)
     {
-        super();
+        super(props);
         
         this.state = {};
     }
@@ -20,7 +22,7 @@ export default class extends React.Component {
             // that.dynamicSetResultsCtrlsMarginResize();
         };
         
-        
+        console.log(this.context);
         
         // YelpCtrl.on("sort", function(){
         //     that.dynamicSetImgHeightInit();
@@ -114,6 +116,10 @@ export default class extends React.Component {
     {
         YelpActions.getBusinessDetailsAndReviews(this.props.id);
     }
+    addDestination() {
+        AppActions.addDestination(this.props.id);
+        // this.props.history.push('/plan');
+    }
     render(){
         const stars_img_path = "/img/small_" + this.props.rating + ".png";
         
@@ -162,9 +168,12 @@ export default class extends React.Component {
                     <div ref="resultsCtrlblock" id="resultsCtrlblock" style={result_ctrls_style}>
                         {/*<button onClick={this.getResultDetails.bind(this)} className="btn btn-md btn-primary">Details</button>*/}
                         <Link className="btn" to={"/businessDetails/"+this.props.id}>Details</Link>
+                        <button onClick={this.addDestination.bind(this)}>Add</button>
                     </div>
                 </div>
             </div>
         )
     }
 }
+
+export default withRouter(SearchResult);
