@@ -31,6 +31,9 @@ class YelpCtrl extends EventEmitter {
         
         this.emit("detailsAndReviews");
     }
+    getBusinessDetailsAndReviews(){
+        return this.businessDetailsAndReviews;
+    }
     getAllBusinesses()
     {
         return this.businesses;

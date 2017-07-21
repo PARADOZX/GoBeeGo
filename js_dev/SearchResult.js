@@ -2,6 +2,7 @@ import React from 'react';
 import YelpCtrl from "./stores/YelpCtrl";
 import * as YelpActions from "./actions/YelpActions";
 import ReactDOM from 'react-dom';
+import {Link} from "react-router-dom";
 
 export default class extends React.Component {
     constructor()
@@ -18,6 +19,8 @@ export default class extends React.Component {
             that.dynamicSetImgHeightResize();
             // that.dynamicSetResultsCtrlsMarginResize();
         };
+        
+        
         
         // YelpCtrl.on("sort", function(){
         //     that.dynamicSetImgHeightInit();
@@ -157,7 +160,8 @@ export default class extends React.Component {
                         <img style={stars_style} src={stars_img_path} />
                     </div>
                     <div ref="resultsCtrlblock" id="resultsCtrlblock" style={result_ctrls_style}>
-                        <button onClick={this.getResultDetails.bind(this)} className="btn btn-md btn-primary">Details</button>
+                        {/*<button onClick={this.getResultDetails.bind(this)} className="btn btn-md btn-primary">Details</button>*/}
+                        <Link className="btn" to={"/businessDetails/"+this.props.id}>Details</Link>
                     </div>
                 </div>
             </div>

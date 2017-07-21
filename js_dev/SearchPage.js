@@ -27,6 +27,10 @@ export default class extends React.Component {
     {
         var that = this;
         
+        // YelpCtrl.on("detailsAndReviews", function(){
+            
+        // });
+        
         YelpCtrl.on("change", receiveResultsCallBackRef);
     }
     componentWillUnmount() {
@@ -36,7 +40,7 @@ export default class extends React.Component {
     {
         const response = YelpCtrl.getAllBusinesses();
         const parsedResults = response[0][0].data;
-      console.log(parsedResults);
+      
         this.setState({
             results : parsedResults
         });

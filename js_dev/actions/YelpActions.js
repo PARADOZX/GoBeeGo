@@ -53,7 +53,7 @@ export function getBusinessDetailsAndReviews(id)
 {
     const business_id = id;
     let data = {};
-    
+console.log(business_id);
     axios.all([getBusinessDetails(business_id), getBusinessReviews(business_id)])
         .then(axios.spread(function (details, reviews) {
             data.details = details;

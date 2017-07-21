@@ -9,6 +9,7 @@ import Dashboard from './Dashboard';
 import Home from './Home';
 import Yelp from './Yelp';
 import BusinessResults from './BusinessResults';
+import BusinessDetails from './BusinessDetails';
 import Plan from './Plan';
 
 import * as AuthActions from "./actions/AuthActions";
@@ -108,6 +109,7 @@ export default class extends React.Component {
                             }
                         }
                         />
+                        <Route path="/businessDetails/:id" component={BusinessDetails} />
                     </div>
                 </div>
             </Router>
