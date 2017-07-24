@@ -14851,19 +14851,26 @@ var PlanStore = function (_EventEmitter) {
     }
 
     _createClass(PlanStore, [{
-        key: "addDestination",
+        key: 'addDestination',
         value: function addDestination(action) {
-            this.destinations.push(action.response);
+            // this.destinations.push(action.response);
+            // this.emit("destination_added");
 
-            this.emit("destination_added");
+            axios({
+                url: '/accountRoutes/saveDestination',
+                method: 'post'
+            }).then(function (response) {
+                console.log(response);
+                // this.emit("destination_added");
+            });
         }
     }, {
-        key: "getDestinations",
+        key: 'getDestinations',
         value: function getDestinations() {
             return this.destinations;
         }
     }, {
-        key: "handleActions",
+        key: 'handleActions',
         value: function handleActions(action) {
 
             switch (action.type) {

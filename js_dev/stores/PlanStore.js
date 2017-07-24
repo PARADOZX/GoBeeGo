@@ -1,7 +1,6 @@
 import { EventEmitter } from "events";
 import dispatcher from '../dispatcher';
 
-
 class PlanStore extends EventEmitter {
     constructor() {
         super();
@@ -9,9 +8,18 @@ class PlanStore extends EventEmitter {
         this.destinations = [];
     }
     addDestination(action){
-        this.destinations.push(action.response);
+        // this.destinations.push(action.response);
+        // this.emit("destination_added");
         
-        this.emit("destination_added");
+        axios({
+            url: '/accountRoutes/saveDestination',
+            method: 'post'
+        })
+        .then(function(response){
+            console.log(response);
+            // this.emit("destination_added");
+        });
+        
     }
     getDestinations()
     {
