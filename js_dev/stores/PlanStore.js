@@ -8,22 +8,29 @@ class PlanStore extends EventEmitter {
         this.destinations = [];
     }
     addDestination(action){
-        // this.destinations.push(action.response);
-        // this.emit("destination_added");
-        
+        var that = this;
+    
         axios({
             url: '/accountRoutes/saveDestination',
-            method: 'post'
+            method: 'post',
+            data: action.response
         })
         .then(function(response){
-            console.log(response);
-            // this.emit("destination_added");
+            if(response.data)
+            {
+                that.emit("destination_added");
+            }
         });
         
     }
     getDestinations()
     {
-        return this.destinations;
+        // return this.destinations;
+        var that = this;
+        return axios({
+            url: '/accountRoutes/getDestinations',
+            method: 'get'
+        })
     }
     handleActions(action){
      

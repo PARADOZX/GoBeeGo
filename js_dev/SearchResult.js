@@ -22,8 +22,6 @@ class SearchResult extends React.Component {
             // that.dynamicSetResultsCtrlsMarginResize();
         };
         
-        console.log(this.context);
-        
         // YelpCtrl.on("sort", function(){
         //     that.dynamicSetImgHeightInit();
         //     // that.dynamicSetResultsCtrlsMarginInit();

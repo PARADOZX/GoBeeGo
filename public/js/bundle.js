@@ -13639,16 +13639,17 @@ var _class = function (_React$Component) {
             destinations: []
         };
         _this.coords = {};
-
-        // PlanStore.on("destination_added", this.destinationAdded);
         return _this;
     }
 
     _createClass(_class, [{
         key: 'componentWillMount',
         value: function componentWillMount() {
-            this.setState({
-                destinations: _PlanStore2.default.getDestinations()
+            var that = this;
+            _PlanStore2.default.getDestinations().then(function (response) {
+                that.setState({
+                    destinations: response.data
+                });
             });
         }
     }, {
@@ -13679,21 +13680,24 @@ var _class = function (_React$Component) {
         value: function render() {
             var destinations = this.state.destinations;
 
-            console.log(destinations);
-            var destinationsList = destinations.map(function (r, i) {
-                return _react2.default.createElement(_DestinationCard2.default, {
-                    key: i,
-                    name: r.details.data.name
-                    // street={r.location.address1 + " " + r.location.address2 + " " + r.location.address3}
-                    // city={r.location.city}
-                    // state={r.location.state}
-                    // zip={r.location.zip_code}
-                    // rating={r.rating}
-                    // phone={r.phone}
-                    // imgurl = {r.image_url}
-                    // id = {r.id}
+            var destinationsList = null;
+
+            if (destinations !== undefined) {
+                destinationsList = destinations.map(function (r, i) {
+                    return _react2.default.createElement(_DestinationCard2.default, {
+                        key: i,
+                        name: r.name
+                        // street={r.location.address1 + " " + r.location.address2 + " " + r.location.address3}
+                        // city={r.location.city}
+                        // state={r.location.state}
+                        // zip={r.location.zip_code}
+                        // rating={r.rating}
+                        // phone={r.phone}
+                        // imgurl = {r.image_url}
+                        // id = {r.id}
+                    });
                 });
-            });
+            }
 
             return _react2.default.createElement(
                 'div',
@@ -14235,8 +14239,6 @@ var SearchResult = function (_React$Component) {
                 that.dynamicSetImgHeightResize();
                 // that.dynamicSetResultsCtrlsMarginResize();
             };
-
-            console.log(this.context);
 
             // YelpCtrl.on("sort", function(){
             //     that.dynamicSetImgHeightInit();
@@ -14853,21 +14855,27 @@ var PlanStore = function (_EventEmitter) {
     _createClass(PlanStore, [{
         key: 'addDestination',
         value: function addDestination(action) {
-            // this.destinations.push(action.response);
-            // this.emit("destination_added");
+            var that = this;
 
             axios({
                 url: '/accountRoutes/saveDestination',
-                method: 'post'
+                method: 'post',
+                data: action.response
             }).then(function (response) {
-                console.log(response);
-                // this.emit("destination_added");
+                if (response.data) {
+                    that.emit("destination_added");
+                }
             });
         }
     }, {
         key: 'getDestinations',
         value: function getDestinations() {
-            return this.destinations;
+            // return this.destinations;
+            var that = this;
+            return axios({
+                url: '/accountRoutes/getDestinations',
+                method: 'get'
+            });
         }
     }, {
         key: 'handleActions',

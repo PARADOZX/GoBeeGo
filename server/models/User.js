@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var BusinessSchema = require('./Business.js');
 
 var userSchema = new Schema({ 
     firstName: String, 
@@ -7,7 +8,8 @@ var userSchema = new Schema({
     email: String,
     password: String,
     active: Boolean,
-    created: Date
+    created: Date,
+    destinations: [{ type: Schema.Types.ObjectId, ref: 'business' }]
 });
 
 module.exports = mongoose.model('user', userSchema);

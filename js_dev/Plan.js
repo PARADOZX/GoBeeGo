@@ -12,15 +12,16 @@ export default class extends React.Component {
             destinations : []
         };
         this.coords = {};
-        
-        // PlanStore.on("destination_added", this.destinationAdded);
     }
     componentWillMount()
     {
-        this.setState(
+        var that = this;
+        PlanStore.getDestinations().then(function(response){ 
+            that.setState(
             {
-                destinations : PlanStore.getDestinations()
-            })
+                destinations : response.data
+            }) 
+        })
     }
     componentDidMount() {
         var that = this;
@@ -45,11 +46,13 @@ export default class extends React.Component {
     }
     render(){
         const {destinations} = this.state;
- console.log(destinations);
-        const destinationsList = destinations.map((r, i) => 
+        let destinationsList = null;
+ 
+        if (destinations !== undefined){
+            destinationsList = destinations.map((r, i) => 
             <DestinationCard 
                 key={i} 
-                name={r.details.data.name} 
+                name={r.name} 
                 // street={r.location.address1 + " " + r.location.address2 + " " + r.location.address3}
                 // city={r.location.city}
                 // state={r.location.state}
@@ -59,6 +62,7 @@ export default class extends React.Component {
                 // imgurl = {r.image_url}
                 // id = {r.id}
             />);
+        }
         
         return (
             <div>

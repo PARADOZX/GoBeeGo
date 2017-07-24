@@ -6,6 +6,7 @@ const session = require('express-session');
 const LocalStrategy = require('passport-local').Strategy;
 const mongoose = require('mongoose');
 const User = require('./models/User');
+const Business = require('./models/Business');
 const url = require('../config/config.js').mongoURL;
 const authRoutes = require('./routes/auth');
 const yelpRoutes = require('./routes/yelpRoutes');
