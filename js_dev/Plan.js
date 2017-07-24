@@ -1,7 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, HashRouter, Route, Link } from "react-router-dom";
 import SearchPage from './SearchPage';
+import DestinationCard from './DestinationCard';
 import PlanStore from "./stores/PlanStore";
+import * as YelpActions from "./actions/YelpActions";
 
 export default class extends React.Component {
     constructor() {
@@ -10,6 +12,8 @@ export default class extends React.Component {
             destinations : []
         };
         this.coords = {};
+        
+        // PlanStore.on("destination_added", this.destinationAdded);
     }
     componentWillMount()
     {
@@ -35,8 +39,27 @@ export default class extends React.Component {
         this.coords.latitude = lat;
         this.coords.longitude = long;
     }
+    destinationAdded()
+    {
+        
+    }
     render(){
         const {destinations} = this.state;
+ console.log(destinations);
+        const destinationsList = destinations.map((r, i) => 
+            <DestinationCard 
+                key={i} 
+                name={r.details.data.name} 
+                // street={r.location.address1 + " " + r.location.address2 + " " + r.location.address3}
+                // city={r.location.city}
+                // state={r.location.state}
+                // zip={r.location.zip_code}
+                // rating={r.rating}
+                // phone={r.phone}
+                // imgurl = {r.image_url}
+                // id = {r.id}
+            />);
+        
         return (
             <div>
                 <p className="page-title">Add Destination</p>
@@ -45,7 +68,9 @@ export default class extends React.Component {
                 <Route path="/plan/somewhere" render={() => (
                   <h3>Please select a topic.</h3>
                 )} />
-                {destinations}
+                <div className="row">
+                    {destinationsList}
+                </div>
             </div>
         )
     }

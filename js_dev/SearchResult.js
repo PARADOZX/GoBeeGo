@@ -118,7 +118,6 @@ class SearchResult extends React.Component {
     }
     addDestination() {
         AppActions.addDestination(this.props.id);
-        // this.props.history.push('/plan');
     }
     render(){
         const stars_img_path = "/img/small_" + this.props.rating + ".png";

@@ -1,4 +1,5 @@
 import dispatcher from "../dispatcher";
+import * as BAL from "../bal/BAL";
 
 export function searchBusinessByKeyword(searchArr, coords)
 {
@@ -53,8 +54,8 @@ export function getBusinessDetailsAndReviews(id)
 {
     const business_id = id;
     let data = {};
-
-    axios.all([getBusinessDetails(business_id), getBusinessReviews(business_id)])
+console.log(id);
+    axios.all([BAL.getBusinessDetails(business_id), BAL.getBusinessReviews(business_id)])
         .then(axios.spread(function (details, reviews) {
             data.details = details;
             data.reviews = reviews;
@@ -65,26 +66,3 @@ export function getBusinessDetailsAndReviews(id)
             }) 
         }));
 }
-
-export function getBusinessDetails(business_id)
-{
-    return axios({
-        url: '/yelpRoutes/businessDetails',
-        method: 'get',
-        params: {
-            id : business_id
-        }
-    })
-}
-
-export function getBusinessReviews(business_id)
-{
-    return axios({
-        url: '/yelpRoutes/businessReviews',
-        method: 'get',
-        params: {
-            id : business_id
-        }
-    })
-}
-

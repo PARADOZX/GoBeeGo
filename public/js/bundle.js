@@ -2772,12 +2772,81 @@ module.exports = reactProdInvariant;
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
+exports.searchBusinessByKeyword = searchBusinessByKeyword;
+exports.autocompleteGen = autocompleteGen;
+exports.sortBusinessResults = sortBusinessResults;
+exports.getBusinessDetailsAndReviews = getBusinessDetailsAndReviews;
 
-var _flux = __webpack_require__(141);
+var _dispatcher = __webpack_require__(28);
 
-exports.default = new _flux.Dispatcher();
+var _dispatcher2 = _interopRequireDefault(_dispatcher);
+
+var _BAL = __webpack_require__(139);
+
+var BAL = _interopRequireWildcard(_BAL);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function searchBusinessByKeyword(searchArr, coords) {
+    var promises = [];
+
+    for (var i = 0; i < searchArr.length; i++) {
+        promises.push(axios({
+            url: '/yelpRoutes/searchByKeyword',
+            method: 'get',
+            params: {
+                search: searchArr[i],
+                lat: coords.latitude,
+                long: coords.longitude
+            }
+        }));
+    }
+
+    axios.all(promises).then(function (response) {
+        // console.log(response); 
+        _dispatcher2.default.dispatch({
+            // type: "YELP_BUSINESS_BY_KEYWORD_RESULTS",
+            // data : response
+            type: "YELP_BUSINESS_RESULTS",
+            data: response
+        });
+    });
+}
+
+function autocompleteGen(text) {
+    return axios({
+        url: '/yelpRoutes/autocomplete',
+        method: 'get',
+        params: {
+            search: text
+        }
+    });
+}
+
+function sortBusinessResults() {
+    _dispatcher2.default.dispatch({
+        type: "YELP_BUSINESS_RESULTS_SORT"
+    });
+}
+
+function getBusinessDetailsAndReviews(id) {
+    var business_id = id;
+    var data = {};
+    console.log(id);
+    axios.all([BAL.getBusinessDetails(business_id), BAL.getBusinessReviews(business_id)]).then(axios.spread(function (details, reviews) {
+        data.details = details;
+        data.reviews = reviews;
+
+        _dispatcher2.default.dispatch({
+            type: "YELP_BUSINESS_DETAILS_REVIEWS",
+            response: data
+        });
+    }));
+}
 
 /***/ }),
 /* 24 */
@@ -3201,7 +3270,7 @@ exports.isLoggedIn = isLoggedIn;
 exports.registerUser = registerUser;
 exports.logOut = logOut;
 
-var _dispatcher = __webpack_require__(23);
+var _dispatcher = __webpack_require__(28);
 
 var _dispatcher2 = _interopRequireDefault(_dispatcher);
 
@@ -3271,97 +3340,12 @@ function logOut() {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
-exports.searchBusinessByKeyword = searchBusinessByKeyword;
-exports.autocompleteGen = autocompleteGen;
-exports.sortBusinessResults = sortBusinessResults;
-exports.getBusinessDetailsAndReviews = getBusinessDetailsAndReviews;
-exports.getBusinessDetails = getBusinessDetails;
-exports.getBusinessReviews = getBusinessReviews;
 
-var _dispatcher = __webpack_require__(23);
+var _flux = __webpack_require__(141);
 
-var _dispatcher2 = _interopRequireDefault(_dispatcher);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function searchBusinessByKeyword(searchArr, coords) {
-    var promises = [];
-
-    for (var i = 0; i < searchArr.length; i++) {
-        promises.push(axios({
-            url: '/yelpRoutes/searchByKeyword',
-            method: 'get',
-            params: {
-                search: searchArr[i],
-                lat: coords.latitude,
-                long: coords.longitude
-            }
-        }));
-    }
-
-    axios.all(promises).then(function (response) {
-        // console.log(response); 
-        _dispatcher2.default.dispatch({
-            // type: "YELP_BUSINESS_BY_KEYWORD_RESULTS",
-            // data : response
-            type: "YELP_BUSINESS_RESULTS",
-            data: response
-        });
-    });
-}
-
-function autocompleteGen(text) {
-    return axios({
-        url: '/yelpRoutes/autocomplete',
-        method: 'get',
-        params: {
-            search: text
-        }
-    });
-}
-
-function sortBusinessResults() {
-    _dispatcher2.default.dispatch({
-        type: "YELP_BUSINESS_RESULTS_SORT"
-    });
-}
-
-function getBusinessDetailsAndReviews(id) {
-    var business_id = id;
-    var data = {};
-
-    axios.all([getBusinessDetails(business_id), getBusinessReviews(business_id)]).then(axios.spread(function (details, reviews) {
-        data.details = details;
-        data.reviews = reviews;
-
-        _dispatcher2.default.dispatch({
-            type: "YELP_BUSINESS_DETAILS_REVIEWS",
-            response: data
-        });
-    }));
-}
-
-function getBusinessDetails(business_id) {
-    return axios({
-        url: '/yelpRoutes/businessDetails',
-        method: 'get',
-        params: {
-            id: business_id
-        }
-    });
-}
-
-function getBusinessReviews(business_id) {
-    return axios({
-        url: '/yelpRoutes/businessReviews',
-        method: 'get',
-        params: {
-            id: business_id
-        }
-    });
-}
+exports.default = new _flux.Dispatcher();
 
 /***/ }),
 /* 29 */
@@ -3378,7 +3362,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _events = __webpack_require__(79);
 
-var _dispatcher = __webpack_require__(23);
+var _dispatcher = __webpack_require__(28);
 
 var _dispatcher2 = _interopRequireDefault(_dispatcher);
 
@@ -3486,7 +3470,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _events = __webpack_require__(79);
 
-var _dispatcher = __webpack_require__(23);
+var _dispatcher = __webpack_require__(28);
 
 var _dispatcher2 = _interopRequireDefault(_dispatcher);
 
@@ -12879,9 +12863,9 @@ var _BusinessDetails = __webpack_require__(126);
 
 var _BusinessDetails2 = _interopRequireDefault(_BusinessDetails);
 
-var _BusinessSearch = __webpack_require__(128);
+var _BusinessSearchResults = __webpack_require__(128);
 
-var _BusinessSearch2 = _interopRequireDefault(_BusinessSearch);
+var _BusinessSearchResults2 = _interopRequireDefault(_BusinessSearchResults);
 
 var _Plan = __webpack_require__(131);
 
@@ -13006,7 +12990,7 @@ var _class = function (_React$Component) {
                                 }
                             }
                         }),
-                        _react2.default.createElement(_reactRouterDom.Route, { path: "/businessSearch/:id", component: _BusinessSearch2.default }),
+                        _react2.default.createElement(_reactRouterDom.Route, { path: "/businessSearchResults/:id", component: _BusinessSearchResults2.default }),
                         _react2.default.createElement(_reactRouterDom.Route, { path: "/businessDetails/:id", component: _BusinessDetails2.default })
                     )
                 )
@@ -13036,7 +13020,7 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _YelpActions = __webpack_require__(28);
+var _YelpActions = __webpack_require__(23);
 
 var YelpActions = _interopRequireWildcard(_YelpActions);
 
@@ -13250,7 +13234,7 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _YelpActions = __webpack_require__(28);
+var _YelpActions = __webpack_require__(23);
 
 var YelpActions = _interopRequireWildcard(_YelpActions);
 
@@ -13261,6 +13245,12 @@ var _YelpCtrl2 = _interopRequireDefault(_YelpCtrl);
 var _SearchResult = __webpack_require__(135);
 
 var _SearchResult2 = _interopRequireDefault(_SearchResult);
+
+var _PlanStore = __webpack_require__(140);
+
+var _PlanStore2 = _interopRequireDefault(_PlanStore);
+
+var _reactRouterDom = __webpack_require__(12);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -13273,14 +13263,15 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var receiveResultsCallBackRef = null;
+var destinationAddedCallBackRef = null;
 
-var _class = function (_React$Component) {
-    _inherits(_class, _React$Component);
+var BusinessSearchResults = function (_React$Component) {
+    _inherits(BusinessSearchResults, _React$Component);
 
-    function _class(props) {
-        _classCallCheck(this, _class);
+    function BusinessSearchResults(props) {
+        _classCallCheck(this, BusinessSearchResults);
 
-        var _this = _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (BusinessSearchResults.__proto__ || Object.getPrototypeOf(BusinessSearchResults)).call(this, props));
 
         _this.state = {
             results: [],
@@ -13291,13 +13282,15 @@ var _class = function (_React$Component) {
         //assign to a variable b/c a new function reference is created after .bind() is called
         //this allows the removeListener to work
         receiveResultsCallBackRef = _this.receiveResultsCallBack.bind(_this);
+        destinationAddedCallBackRef = _this.destinationAddedCallBack.bind(_this);
         return _this;
     }
 
-    _createClass(_class, [{
+    _createClass(BusinessSearchResults, [{
         key: "componentWillMount",
         value: function componentWillMount() {
             _YelpCtrl2.default.on("change", receiveResultsCallBackRef);
+            _PlanStore2.default.on("destination_added", destinationAddedCallBackRef);
         }
     }, {
         key: "componentDidMount",
@@ -13318,6 +13311,12 @@ var _class = function (_React$Component) {
         key: "componentWillUnmount",
         value: function componentWillUnmount() {
             _YelpCtrl2.default.removeListener("change", receiveResultsCallBackRef);
+            _PlanStore2.default.removeListener("destination_added", destinationAddedCallBackRef);
+        }
+    }, {
+        key: "destinationAddedCallBack",
+        value: function destinationAddedCallBack() {
+            this.props.history.push('/plan');
         }
     }, {
         key: "receiveResultsCallBack",
@@ -13454,10 +13453,10 @@ var _class = function (_React$Component) {
         }
     }]);
 
-    return _class;
+    return BusinessSearchResults;
 }(_react2.default.Component);
 
-exports.default = _class;
+exports.default = (0, _reactRouterDom.withRouter)(BusinessSearchResults);
 
 /***/ }),
 /* 129 */
@@ -13606,9 +13605,19 @@ var _SearchPage = __webpack_require__(134);
 
 var _SearchPage2 = _interopRequireDefault(_SearchPage);
 
+var _DestinationCard = __webpack_require__(283);
+
+var _DestinationCard2 = _interopRequireDefault(_DestinationCard);
+
 var _PlanStore = __webpack_require__(140);
 
 var _PlanStore2 = _interopRequireDefault(_PlanStore);
+
+var _YelpActions = __webpack_require__(23);
+
+var YelpActions = _interopRequireWildcard(_YelpActions);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -13630,6 +13639,8 @@ var _class = function (_React$Component) {
             destinations: []
         };
         _this.coords = {};
+
+        // PlanStore.on("destination_added", this.destinationAdded);
         return _this;
     }
 
@@ -13661,9 +13672,28 @@ var _class = function (_React$Component) {
             this.coords.longitude = long;
         }
     }, {
+        key: 'destinationAdded',
+        value: function destinationAdded() {}
+    }, {
         key: 'render',
         value: function render() {
             var destinations = this.state.destinations;
+
+            console.log(destinations);
+            var destinationsList = destinations.map(function (r, i) {
+                return _react2.default.createElement(_DestinationCard2.default, {
+                    key: i,
+                    name: r.details.data.name
+                    // street={r.location.address1 + " " + r.location.address2 + " " + r.location.address3}
+                    // city={r.location.city}
+                    // state={r.location.state}
+                    // zip={r.location.zip_code}
+                    // rating={r.rating}
+                    // phone={r.phone}
+                    // imgurl = {r.image_url}
+                    // id = {r.id}
+                });
+            });
 
             return _react2.default.createElement(
                 'div',
@@ -13686,7 +13716,11 @@ var _class = function (_React$Component) {
                             'Please select a topic.'
                         );
                     } }),
-                destinations
+                _react2.default.createElement(
+                    'div',
+                    { className: 'row' },
+                    destinationsList
+                )
             );
         }
     }]);
@@ -14020,7 +14054,7 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _YelpActions = __webpack_require__(28);
+var _YelpActions = __webpack_require__(23);
 
 var YelpActions = _interopRequireWildcard(_YelpActions);
 
@@ -14120,7 +14154,7 @@ var _class = function (_React$Component) {
                         nameVal: "search" }),
                     _react2.default.createElement(
                         _reactRouterDom.Link,
-                        { className: "btn btn-primary", to: "/businessSearch/" + this.state.search },
+                        { className: "btn btn-primary", to: "/businessSearchResults/" + this.state.search },
                         "Search"
                     )
                 )
@@ -14154,7 +14188,7 @@ var _YelpCtrl = __webpack_require__(30);
 
 var _YelpCtrl2 = _interopRequireDefault(_YelpCtrl);
 
-var _YelpActions = __webpack_require__(28);
+var _YelpActions = __webpack_require__(23);
 
 var YelpActions = _interopRequireWildcard(_YelpActions);
 
@@ -14306,7 +14340,6 @@ var SearchResult = function (_React$Component) {
         key: "addDestination",
         value: function addDestination() {
             AppActions.addDestination(this.props.id);
-            // this.props.history.push('/plan');
         }
     }, {
         key: "render",
@@ -14419,7 +14452,7 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _YelpActions = __webpack_require__(28);
+var _YelpActions = __webpack_require__(23);
 
 var YelpActions = _interopRequireWildcard(_YelpActions);
 
@@ -14623,17 +14656,31 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.addDestination = addDestination;
 
-var _dispatcher = __webpack_require__(23);
+var _dispatcher = __webpack_require__(28);
 
 var _dispatcher2 = _interopRequireDefault(_dispatcher);
 
+var _BAL = __webpack_require__(139);
+
+var BAL = _interopRequireWildcard(_BAL);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function addDestination(business_id) {
-    _dispatcher2.default.dispatch({
-        type: "ADD_DESTINATION",
-        response: business_id
-    });
+function addDestination(id) {
+    var business_id = id;
+    var data = {};
+
+    axios.all([BAL.getBusinessDetails(business_id), BAL.getBusinessReviews(business_id)]).then(axios.spread(function (details, reviews) {
+        data.details = details;
+        data.reviews = reviews;
+
+        _dispatcher2.default.dispatch({
+            type: "ADD_DESTINATION",
+            response: data
+        });
+    }));
 }
 
 /***/ }),
@@ -14695,6 +14742,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.cityFrequencyCount = cityFrequencyCount;
 exports.getDistanceFromLatLonInKm = getDistanceFromLatLonInKm;
+exports.getBusinessDetails = getBusinessDetails;
+exports.getBusinessReviews = getBusinessReviews;
 //returns array with the frequency of city names in the results
 function cityFrequencyCount(bigArr) {
     var cityCount = {};
@@ -14742,6 +14791,26 @@ function deg2rad(deg) {
     return deg * (Math.PI / 180);
 }
 
+function getBusinessDetails(business_id) {
+    return axios({
+        url: '/yelpRoutes/businessDetails',
+        method: 'get',
+        params: {
+            id: business_id
+        }
+    });
+}
+
+function getBusinessReviews(business_id) {
+    return axios({
+        url: '/yelpRoutes/businessReviews',
+        method: 'get',
+        params: {
+            id: business_id
+        }
+    });
+}
+
 /***/ }),
 /* 140 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -14757,7 +14826,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _events = __webpack_require__(79);
 
-var _dispatcher = __webpack_require__(23);
+var _dispatcher = __webpack_require__(28);
 
 var _dispatcher2 = _interopRequireDefault(_dispatcher);
 
@@ -14785,6 +14854,8 @@ var PlanStore = function (_EventEmitter) {
         key: "addDestination",
         value: function addDestination(action) {
             this.destinations.push(action.response);
+
+            this.emit("destination_added");
         }
     }, {
         key: "getDestinations",
@@ -32111,6 +32182,67 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 };
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 283 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(2);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _class = function (_React$Component) {
+    _inherits(_class, _React$Component);
+
+    function _class(props) {
+        _classCallCheck(this, _class);
+
+        var _this = _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, props));
+
+        _this.state = {};
+        return _this;
+    }
+
+    _createClass(_class, [{
+        key: 'componentWillMount',
+        value: function componentWillMount() {}
+    }, {
+        key: 'componentDidMount',
+        value: function componentDidMount() {}
+    }, {
+        key: 'render',
+        value: function render() {
+
+            return _react2.default.createElement(
+                'div',
+                null,
+                'Desitination card',
+                this.props.name
+            );
+        }
+    }]);
+
+    return _class;
+}(_react2.default.Component);
+
+exports.default = _class;
 
 /***/ })
 /******/ ]);

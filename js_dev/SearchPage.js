@@ -72,7 +72,7 @@ export default class extends React.Component {
                         onKeyUpHandler={this.autocompleteGen.bind(this)} 
                         val={this.state.search} 
                         nameVal="search" />
-                    <Link className="btn btn-primary" to={"/businessSearch/"+this.state.search}>Search</Link>
+                    <Link className="btn btn-primary" to={"/businessSearchResults/"+this.state.search}>Search</Link>
                 </section>
             </div>
         )

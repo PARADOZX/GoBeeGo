@@ -10,7 +10,7 @@ import Home from './Home';
 import Yelp from './Yelp';
 import BusinessResults from './BusinessResults';
 import BusinessDetails from './BusinessDetails';
-import BusinessSearch from './BusinessSearch';
+import BusinessSearchResults from './BusinessSearchResults';
 import Plan from './Plan';
 
 import * as AuthActions from "./actions/AuthActions";
@@ -110,7 +110,7 @@ export default class extends React.Component {
                             }
                         }
                         />
-                        <Route path="/businessSearch/:id" component={BusinessSearch} />
+                        <Route path="/businessSearchResults/:id" component={BusinessSearchResults} />
                         <Route path="/businessDetails/:id" component={BusinessDetails} />
                     </div>
                 </div>

@@ -1,6 +1,7 @@
 import { EventEmitter } from "events";
 import dispatcher from '../dispatcher';
 
+
 class PlanStore extends EventEmitter {
     constructor() {
         super();
@@ -9,6 +10,8 @@ class PlanStore extends EventEmitter {
     }
     addDestination(action){
         this.destinations.push(action.response);
+        
+        this.emit("destination_added");
     }
     getDestinations()
     {

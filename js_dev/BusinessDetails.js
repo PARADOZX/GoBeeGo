@@ -2,7 +2,6 @@ import React from 'react';
 import * as YelpActions from "./actions/YelpActions";
 import YelpCtrl from "./stores/YelpCtrl";
 
-
 let receiveDetailAndReviewsCallBackRef = null;
 
 export default class extends React.Component {

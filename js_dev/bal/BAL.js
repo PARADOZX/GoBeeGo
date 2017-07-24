@@ -58,3 +58,25 @@ export function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
 function deg2rad(deg) {
   return deg * (Math.PI/180)
 }
+
+export function getBusinessDetails(business_id)
+{
+    return axios({
+        url: '/yelpRoutes/businessDetails',
+        method: 'get',
+        params: {
+            id : business_id
+        }
+    })
+}
+
+export function getBusinessReviews(business_id)
+{
+    return axios({
+        url: '/yelpRoutes/businessReviews',
+        method: 'get',
+        params: {
+            id : business_id
+        }
+    })
+}
