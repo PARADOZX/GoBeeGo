@@ -23,13 +23,16 @@ class PlanStore extends EventEmitter {
         });
         
     }
-    getDestinations()
+    getDestinations(tripID)
     {
         // return this.destinations;
         var that = this;
         return axios({
             url: '/accountRoutes/getDestinations',
-            method: 'get'
+            method: 'get',
+            params: {
+                tripID : tripID
+            }
         })
     }
     handleActions(action){

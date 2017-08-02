@@ -4,9 +4,9 @@ import Autosuggest from "./Autosuggest";
 import {Link} from "react-router-dom";
 
 export default class extends React.Component {
-    constructor()
+    constructor(props)
     {
-        super();
+        super(props);
         
         this.state = {
             search : "",
@@ -59,7 +59,7 @@ export default class extends React.Component {
     }
     render(){
         const {suggestions} = this.state;
-     
+        
         const suggestionsList = suggestions.map((sugg, i)=><option key={i} value={sugg}/>);
         
         return (

@@ -13,7 +13,6 @@ export default class extends React.Component {
       AuthActions.logOut();
     }
     render(){
-      
         const {logged} = this.props;
         
         return (
@@ -31,9 +30,13 @@ export default class extends React.Component {
                           <li className="nav-item active">
                             <Link className="nav-link" to="/home">Home</Link>
                           </li>
-                          <li className="nav-item">
-                            <Link className="nav-link" to="/plan">Plan</Link>
-                          </li>
+                          {
+                            this.props.tripID
+                          ? <li className="nav-item">
+                               <Link className="nav-link" to="/plan">Plan</Link>
+                            </li>
+                          : null
+                          }
                           <li className="nav-item">
                             <Link className="nav-link" to="/yelp">Yelp</Link>
                           </li>

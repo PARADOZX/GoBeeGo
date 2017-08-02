@@ -9,7 +9,8 @@ var userSchema = new Schema({
     password: String,
     active: Boolean,
     created: Date,
-    destinations: [{ type: Schema.Types.ObjectId, ref: 'business' }]
+    destinations: [{ type: Schema.Types.ObjectId, ref: 'business' }],
+    trips: [{ type: Schema.Types.ObjectId, ref: 'trip' }]
 });
 
 module.exports = mongoose.model('user', userSchema);

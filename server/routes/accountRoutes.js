@@ -4,7 +4,9 @@ const router = express.Router();
 const accountController = require('../controllers/accountController');
 
 router.get('/getDestinations', accountController.getDestinations);
+router.get('/getTrips', accountController.getTrips);
 
 router.post('/saveDestination', accountController.saveDestination);
+router.post('/createTrip', accountController.createTrip);
 
 module.exports = router;

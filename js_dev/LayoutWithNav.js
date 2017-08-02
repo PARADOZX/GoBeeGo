@@ -6,7 +6,7 @@ export default class extends React.Component {
     render(){
             return (
                 <div>
-                    <Nav logged={this.props.logged}></Nav>
+                    <Nav tripID={this.props.tripID} logged={this.props.logged}></Nav>
                 </div>
             );    
     }

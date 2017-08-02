@@ -9,7 +9,7 @@ export default class extends React.Component {
     }
     componentWillMount()
     {
-        
+        console.log(this.props.tripID);
     }
     componentDidMount()
     {

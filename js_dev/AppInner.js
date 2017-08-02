@@ -26,8 +26,11 @@ export default class extends React.Component {
     {
         super();
         this.state = {
-            loggedIn : false
+            loggedIn : false,
+            tripID : null
         };
+        
+        // this.setTripID.bind(this);
     }
     componentWillMount(){
         
@@ -60,15 +63,21 @@ export default class extends React.Component {
             }   
         })
     }
+    setTripID(trip_id)
+    {
+        this.setState(
+            {
+                tripID : trip_id
+            })
+    }
     render(){
     
         var {loggedIn} = this.state;
         
-        // console.log("is logged in: " + loggedIn);
         return (
             <Router>
                 <div>
-                    <LayoutWithNav logged={loggedIn}></LayoutWithNav>
+                    <LayoutWithNav tripID={this.state.tripID} logged={loggedIn}></LayoutWithNav>
                     <div className="container">
                         <Route exact path="/" render={ () => {
                                 if(loggedIn)
@@ -86,7 +95,7 @@ export default class extends React.Component {
                         <Route path="/home" render={ () => {
                                 if(loggedIn)
                                 {
-                                    return <Dashboard />
+                                    return <Dashboard setTripID={this.setTripID.bind(this)} />
                                 } 
                                 else 
                                 {
@@ -101,7 +110,7 @@ export default class extends React.Component {
                         <Route path="/plan" render={ () => {
                                 if(loggedIn)
                                 {
-                                    return <Plan />
+                                    return <Plan tripID={this.state.tripID} />
                                 } 
                                 else 
                                 {
@@ -110,7 +119,11 @@ export default class extends React.Component {
                             }
                         }
                         />
-                        <Route path="/businessSearchResults/:id" component={BusinessSearchResults} />
+                        <Route path="/businessSearchResults/:id" render={ ()=>{
+                                return <BusinessSearchResults tripID={this.state.tripID} />
+                            }
+                        }
+                        />
                         <Route path="/businessDetails/:id" component={BusinessDetails} />
                     </div>
                 </div>

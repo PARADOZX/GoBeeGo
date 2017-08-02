@@ -115,9 +115,13 @@ class SearchResult extends React.Component {
         YelpActions.getBusinessDetailsAndReviews(this.props.id);
     }
     addDestination() {
-        AppActions.addDestination(this.props.id);
+        //add to user
+        // AppActions.addDestination(this.props.id);
+        //add to trip
+        AppActions.addDestination(this.props.id, this.props.tripID);
     }
     render(){
+        
         const stars_img_path = "/img/small_" + this.props.rating + ".png";
         
         const bottom_margin = '20px';

@@ -6,17 +6,18 @@ import PlanStore from "./stores/PlanStore";
 import * as YelpActions from "./actions/YelpActions";
 
 export default class extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             destinations : []
         };
         this.coords = {};
+        
     }
     componentWillMount()
     {
         var that = this;
-        PlanStore.getDestinations().then(function(response){ 
+        PlanStore.getDestinations(this.props.tripID).then(function(response){ 
             that.setState(
             {
                 destinations : response.data
@@ -46,6 +47,7 @@ export default class extends React.Component {
     }
     render(){
         const {destinations} = this.state;
+        const {tripID} = this.props;
         let destinationsList = null;
  
         if (destinations !== undefined){
@@ -61,6 +63,7 @@ export default class extends React.Component {
                 // phone={r.phone}
                 // imgurl = {r.image_url}
                 // id = {r.id}
+                tripID={tripID}
             />);
         }
         
