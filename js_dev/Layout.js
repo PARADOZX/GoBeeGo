@@ -16,7 +16,7 @@ export default class extends React.Component {
       return (
           <div>
             <h3>React App</h3>
-            <div className="container">
+            <div className="container-fluid">
             {this.props.children}
             </div>
         </div>

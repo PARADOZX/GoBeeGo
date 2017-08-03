@@ -78,7 +78,7 @@ export default class extends React.Component {
             <Router>
                 <div>
                     <LayoutWithNav tripID={this.state.tripID} logged={loggedIn}></LayoutWithNav>
-                    <div className="container">
+                    <div className="container-fluid">
                         <Route exact path="/" render={ () => {
                                 if(loggedIn)
                                 {

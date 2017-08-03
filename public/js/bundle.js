@@ -8998,7 +8998,7 @@ var _class = function (_React$Component) {
                 ),
                 _react2.default.createElement(
                     "div",
-                    { className: "container" },
+                    { className: "container-fluid" },
                     this.props.children
                 )
             );
@@ -13214,7 +13214,7 @@ var _class = function (_React$Component) {
                     _react2.default.createElement(_LayoutWithNav2.default, { tripID: this.state.tripID, logged: loggedIn }),
                     _react2.default.createElement(
                         "div",
-                        { className: "container" },
+                        { className: "container-fluid" },
                         _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/", render: function render() {
                                 if (loggedIn) {
                                     return _react2.default.createElement(_reactRouter.Redirect, { to: "/home" });
@@ -13858,44 +13858,48 @@ var _class = function (_React$Component) {
                         key: r._id,
                         name: r.name,
                         selectTrip: _this2.setTripID.bind(_this2),
-                        id: r._id
+                        id: r._id,
+                        datecreated: r.datecreated,
+                        dateupdated: r.dateupdated,
+                        destinations: r.destinations
                     });
                 });
             }
 
+            var createTripStyle = {
+                width: '400px'
+            };
+
             return _react2.default.createElement(
                 "div",
-                null,
-                _react2.default.createElement(
-                    "h3",
-                    null,
-                    "Dashboard"
-                ),
+                { className: "container-fluid" },
                 _react2.default.createElement(
                     "section",
                     null,
                     _react2.default.createElement(
-                        "h4",
-                        null,
-                        "Trips"
-                    ),
-                    _react2.default.createElement(
-                        "button",
-                        { onClick: this.setTripID.bind(this) },
-                        "Set TripID"
-                    ),
-                    _react2.default.createElement("br", null),
-                    _react2.default.createElement("input", { type: "text", onChange: this.onHandleChange.bind(this), value: this.state.newTripName, name: "newTripName" }),
-                    _react2.default.createElement(
-                        "button",
-                        { onClick: this.createNewTrip.bind(this) },
-                        "Create Trip"
+                        "div",
+                        { className: "input-group", style: createTripStyle },
+                        _react2.default.createElement("input", { className: "form-control", type: "text", onChange: this.onHandleChange.bind(this), value: this.state.newTripName, name: "newTripName" }),
+                        _react2.default.createElement(
+                            "button",
+                            { className: "input-group-addon", onClick: this.createNewTrip.bind(this) },
+                            "Create Plan"
+                        )
                     )
                 ),
                 _react2.default.createElement(
                     "section",
                     null,
-                    tripsList
+                    _react2.default.createElement(
+                        "p",
+                        { className: "page-title" },
+                        "Your Plans!"
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        { className: "mt row" },
+                        tripsList
+                    )
                 )
             );
         }
@@ -14921,25 +14925,60 @@ var _class = function (_React$Component) {
     }
 
     _createClass(_class, [{
-        key: "componentWillMount",
+        key: 'componentWillMount',
         value: function componentWillMount() {}
     }, {
-        key: "setTripID",
+        key: 'setTripID',
         value: function setTripID() {
             this.props.selectTrip(this.props.id);
         }
     }, {
-        key: "render",
+        key: 'render',
         value: function render() {
+            var datecreated = this.props.datecreated;
+
+            var dateFormatted = void 0;
+
+            if (datecreated != undefined) {
+                dateFormatted = new Date(datecreated);
+                dateFormatted = "created " + (dateFormatted.getMonth() + 1) + '-' + dateFormatted.getDate() + '-' + dateFormatted.getFullYear();
+            }
+
             return _react2.default.createElement(
-                "div",
-                null,
-                "Trip Card",
-                this.props.name,
+                'div',
+                { className: 'col-10 mt-4' },
                 _react2.default.createElement(
-                    "button",
-                    { className: "btn", onClick: this.setTripID.bind(this) },
-                    "Select Trip"
+                    'div',
+                    { className: 'trip-card card' },
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'card-header' },
+                        _react2.default.createElement(
+                            'span',
+                            { className: 'h5' },
+                            this.props.name
+                        ),
+                        _react2.default.createElement(
+                            'span',
+                            { className: 'float-right' },
+                            this.props.destinations.length,
+                            ' stops'
+                        ),
+                        _react2.default.createElement(
+                            'p',
+                            { className: 'text-muted' },
+                            dateFormatted
+                        )
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'card-block' },
+                        _react2.default.createElement(
+                            'button',
+                            { className: 'btn btn-primary', onClick: this.setTripID.bind(this) },
+                            'select'
+                        )
+                    )
                 )
             );
         }

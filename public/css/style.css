@@ -1,7 +1,18 @@
-.mt {
-    margin-top: 35px;
-}
+/* font design */
+
 .page-title {
     margin-top: 20px;
     font-size: 2rem;
+}
+
+/* margins */
+
+.mt {
+    margin-top: 35px;
+}
+
+/*********************/
+
+.trip-card {
+    
 }

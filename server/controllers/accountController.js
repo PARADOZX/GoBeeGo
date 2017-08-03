@@ -115,7 +115,9 @@ exports.createTrip = function(req, res){
                     //create new trip
                     const newTrip = new Trip({
                         name: tripname, 
-                        user: userRecord
+                        user: userRecord,
+                        datecreated: Date.now(),
+                        dateupdated: Date.now()
                     }); 
                     
                     newTrip.save(function(err, newRecord){

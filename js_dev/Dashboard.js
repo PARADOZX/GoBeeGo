@@ -75,10 +75,9 @@ export default class extends React.Component {
         alert("Trip name already used.");
     }
     render() {
-        
         const {trips} = this.state;
         let tripsList = null;
-
+        
         if (trips !== undefined){
             tripsList = trips.map((r, i) => 
             <TripCard 
@@ -86,20 +85,28 @@ export default class extends React.Component {
                 name={r.name} 
                 selectTrip={this.setTripID.bind(this)}
                 id={r._id}
+                datecreated={r.datecreated}
+                dateupdated={r.dateupdated}
+                destinations={r.destinations}
             />);
         }
         
+        const createTripStyle = {
+            width: '400px'
+        };
+        
         return (
-            <div>
-                <h3>Dashboard</h3>  
+            <div className="container-fluid">
                 <section>
-                   <h4>Trips</h4>
-                   <button onClick={this.setTripID.bind(this)}>Set TripID</button>
-                   <br/>
-                   <input type="text" onChange={this.onHandleChange.bind(this)} value={this.state.newTripName} name="newTripName" /><button onClick={this.createNewTrip.bind(this)}>Create Trip</button>
+                   <div className="input-group" style={createTripStyle}>
+                    <input className="form-control" type="text" onChange={this.onHandleChange.bind(this)} value={this.state.newTripName} name="newTripName" /><button className="input-group-addon" onClick={this.createNewTrip.bind(this)}>Create Plan</button>
+                   </div>
                 </section>
                 <section>
-                {tripsList}
+                    <p className="page-title">Your Plans!</p>
+                    <div className="mt row">
+                    {tripsList}
+                    </div>
                 </section>
             </div>
         ) 
