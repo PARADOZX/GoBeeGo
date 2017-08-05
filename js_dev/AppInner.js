@@ -107,7 +107,7 @@ export default class extends React.Component {
                         <Route path="/yelp" component={Yelp} />
                         <Route path="/businessResults" component={BusinessResults} />
                         {/*<Route path="/plan" component={Plan} />*/}
-                        <Route path="/plan" render={ () => {
+                        {/*<Route path="/plan" render={ () => {
                                 if(loggedIn)
                                 {
                                     return <Plan tripID={this.state.tripID} />
@@ -118,7 +118,14 @@ export default class extends React.Component {
                                 }
                             }
                         }
+                        />*/}
+                        <Route path="/plan/:id" render={ (props) => {
+                                    return <Plan {...props} setTripID={this.setTripID.bind(this)} />
+                            }
+                        }
                         />
+                        {/*<Route path="/plan/:id" component={Plan} />*/}
+                        
                         <Route path="/businessSearchResults/:id" render={ ()=>{
                                 return <BusinessSearchResults tripID={this.state.tripID} />
                             }

@@ -116,7 +116,7 @@ class BusinessSearchResults extends React.Component {
         this.setState({resultFilter:event.target.value});
     }
     render(){
-        // console.log(this.props);
+        
         this.applyResultFilter();
         const {results} = this.state;
         const resultsList = results.map((r, i) => 

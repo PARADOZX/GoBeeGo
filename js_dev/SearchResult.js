@@ -118,6 +118,7 @@ class SearchResult extends React.Component {
         //add to user
         // AppActions.addDestination(this.props.id);
         //add to trip
+        
         AppActions.addDestination(this.props.id, this.props.tripID);
     }
     render(){

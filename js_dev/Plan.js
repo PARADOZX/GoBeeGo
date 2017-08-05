@@ -17,12 +17,15 @@ export default class extends React.Component {
     componentWillMount()
     {
         var that = this;
-        PlanStore.getDestinations(this.props.tripID).then(function(response){ 
+        // PlanStore.getDestinations(this.props.tripID).then(function(response){ 
+        PlanStore.getDestinations(this.props.match.params.id).then(function(response){ 
             that.setState(
             {
                 destinations : response.data
             }) 
         })
+        
+        this.props.setTripID(this.props.match.params.id);
     }
     componentDidMount() {
         var that = this;
@@ -47,7 +50,7 @@ export default class extends React.Component {
     }
     render(){
         const {destinations} = this.state;
-        const {tripID} = this.props;
+        const tripID = this.props.match.params.id;
         let destinationsList = null;
  
         if (destinations !== undefined){
@@ -55,18 +58,10 @@ export default class extends React.Component {
             <DestinationCard 
                 key={i} 
                 name={r.name} 
-                // street={r.location.address1 + " " + r.location.address2 + " " + r.location.address3}
-                // city={r.location.city}
-                // state={r.location.state}
-                // zip={r.location.zip_code}
-                // rating={r.rating}
-                // phone={r.phone}
-                // imgurl = {r.image_url}
-                // id = {r.id}
                 tripID={tripID}
             />);
         }
-        
+  
         return (
             <div>
                 <p className="page-title">Add Destination</p>

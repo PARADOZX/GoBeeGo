@@ -1169,36 +1169,6 @@ module.exports = ReactComponentTreeHook;
 
 /***/ }),
 /* 10 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2016-present, Facebook, Inc.
- * All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- *
- * 
- */
-
-
-
-// Trust the developer to only use ReactInstrumentation with a __DEV__ check
-
-var debugTool = null;
-
-if (process.env.NODE_ENV !== 'production') {
-  var ReactDebugTool = __webpack_require__(175);
-  debugTool = ReactDebugTool;
-}
-
-module.exports = { debugTool: debugTool };
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
-
-/***/ }),
-/* 11 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1255,6 +1225,36 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {/**
+ * Copyright 2016-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * 
+ */
+
+
+
+// Trust the developer to only use ReactInstrumentation with a __DEV__ check
+
+var debugTool = null;
+
+if (process.env.NODE_ENV !== 'production') {
+  var ReactDebugTool = __webpack_require__(175);
+  debugTool = ReactDebugTool;
+}
+
+module.exports = { debugTool: debugTool };
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
 /* 12 */
@@ -3004,7 +3004,7 @@ module.exports = DOMLazyTree;
 
 
 var ReactRef = __webpack_require__(189);
-var ReactInstrumentation = __webpack_require__(10);
+var ReactInstrumentation = __webpack_require__(11);
 
 var warning = __webpack_require__(3);
 
@@ -5876,7 +5876,7 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(11);
+var _reactRouterDom = __webpack_require__(10);
 
 var _AuthActions = __webpack_require__(28);
 
@@ -6131,7 +6131,7 @@ function getBusinessReviews(business_id) {
 var DOMLazyTree = __webpack_require__(25);
 var Danger = __webpack_require__(152);
 var ReactDOMComponentTree = __webpack_require__(5);
-var ReactInstrumentation = __webpack_require__(10);
+var ReactInstrumentation = __webpack_require__(11);
 
 var createMicrosoftUnsafeLocalFunction = __webpack_require__(58);
 var setInnerHTML = __webpack_require__(42);
@@ -6962,7 +6962,7 @@ var _prodInvariant = __webpack_require__(4);
 
 var ReactCurrentOwner = __webpack_require__(15);
 var ReactInstanceMap = __webpack_require__(33);
-var ReactInstrumentation = __webpack_require__(10);
+var ReactInstrumentation = __webpack_require__(11);
 var ReactUpdates = __webpack_require__(13);
 
 var invariant = __webpack_require__(1);
@@ -8945,7 +8945,7 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(11);
+var _reactRouterDom = __webpack_require__(10);
 
 var _Nav = __webpack_require__(85);
 
@@ -9174,7 +9174,7 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(11);
+var _reactRouterDom = __webpack_require__(10);
 
 var _AuthActions = __webpack_require__(28);
 
@@ -9759,7 +9759,7 @@ module.exports = PooledClass.addPoolingTo(CallbackQueue);
 
 var DOMProperty = __webpack_require__(18);
 var ReactDOMComponentTree = __webpack_require__(5);
-var ReactInstrumentation = __webpack_require__(10);
+var ReactInstrumentation = __webpack_require__(11);
 
 var quoteAttributeValueForBrowser = __webpack_require__(215);
 var warning = __webpack_require__(3);
@@ -10506,7 +10506,7 @@ var ReactDOMContainerInfo = __webpack_require__(162);
 var ReactDOMFeatureFlags = __webpack_require__(164);
 var ReactFeatureFlags = __webpack_require__(94);
 var ReactInstanceMap = __webpack_require__(33);
-var ReactInstrumentation = __webpack_require__(10);
+var ReactInstrumentation = __webpack_require__(11);
 var ReactMarkupChecksum = __webpack_require__(184);
 var ReactReconciler = __webpack_require__(26);
 var ReactUpdateQueue = __webpack_require__(57);
@@ -13062,6 +13062,8 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = __webpack_require__(2);
@@ -13072,7 +13074,7 @@ var _reactDom = __webpack_require__(36);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _reactRouterDom = __webpack_require__(11);
+var _reactRouterDom = __webpack_require__(10);
 
 var _reactRouter = __webpack_require__(8);
 
@@ -13234,12 +13236,8 @@ var _class = function (_React$Component) {
                         }),
                         _react2.default.createElement(_reactRouterDom.Route, { path: "/yelp", component: _Yelp2.default }),
                         _react2.default.createElement(_reactRouterDom.Route, { path: "/businessResults", component: _BusinessResults2.default }),
-                        _react2.default.createElement(_reactRouterDom.Route, { path: "/plan", render: function render() {
-                                if (loggedIn) {
-                                    return _react2.default.createElement(_Plan2.default, { tripID: _this3.state.tripID });
-                                } else {
-                                    return _react2.default.createElement(_Login2.default, null);
-                                }
+                        _react2.default.createElement(_reactRouterDom.Route, { path: "/plan/:id", render: function render(props) {
+                                return _react2.default.createElement(_Plan2.default, _extends({}, props, { setTripID: _this3.setTripID.bind(_this3) }));
                             }
                         }),
                         _react2.default.createElement(_reactRouterDom.Route, { path: "/businessSearchResults/:id", render: function render() {
@@ -13505,7 +13503,7 @@ var _PlanStore = __webpack_require__(87);
 
 var _PlanStore2 = _interopRequireDefault(_PlanStore);
 
-var _reactRouterDom = __webpack_require__(11);
+var _reactRouterDom = __webpack_require__(10);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -13653,7 +13651,6 @@ var BusinessSearchResults = function (_React$Component) {
         value: function render() {
             var _this2 = this;
 
-            // console.log(this.props);
             this.applyResultFilter();
             var results = this.state.results;
 
@@ -14045,7 +14042,7 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(11);
+var _reactRouterDom = __webpack_require__(10);
 
 var _SearchPage = __webpack_require__(138);
 
@@ -14093,11 +14090,14 @@ var _class = function (_React$Component) {
         key: 'componentWillMount',
         value: function componentWillMount() {
             var that = this;
-            _PlanStore2.default.getDestinations(this.props.tripID).then(function (response) {
+            // PlanStore.getDestinations(this.props.tripID).then(function(response){ 
+            _PlanStore2.default.getDestinations(this.props.match.params.id).then(function (response) {
                 that.setState({
                     destinations: response.data
                 });
             });
+
+            this.props.setTripID(this.props.match.params.id);
         }
     }, {
         key: 'componentDidMount',
@@ -14126,24 +14126,16 @@ var _class = function (_React$Component) {
         key: 'render',
         value: function render() {
             var destinations = this.state.destinations;
-            var tripID = this.props.tripID;
 
+            var tripID = this.props.match.params.id;
             var destinationsList = null;
 
             if (destinations !== undefined) {
                 destinationsList = destinations.map(function (r, i) {
                     return _react2.default.createElement(_DestinationCard2.default, {
                         key: i,
-                        name: r.name
-                        // street={r.location.address1 + " " + r.location.address2 + " " + r.location.address3}
-                        // city={r.location.city}
-                        // state={r.location.state}
-                        // zip={r.location.zip_code}
-                        // rating={r.rating}
-                        // phone={r.phone}
-                        // imgurl = {r.image_url}
-                        // id = {r.id}
-                        , tripID: tripID
+                        name: r.name,
+                        tripID: tripID
                     });
                 });
             }
@@ -14208,7 +14200,7 @@ var _AuthCtrl = __webpack_require__(29);
 
 var _AuthCtrl2 = _interopRequireDefault(_AuthCtrl);
 
-var _reactRouterDom = __webpack_require__(11);
+var _reactRouterDom = __webpack_require__(10);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -14446,7 +14438,7 @@ var _reactDom = __webpack_require__(36);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _reactRouterDom = __webpack_require__(11);
+var _reactRouterDom = __webpack_require__(10);
 
 var _Home = __webpack_require__(47);
 
@@ -14515,7 +14507,7 @@ var _Autosuggest = __webpack_require__(84);
 
 var _Autosuggest2 = _interopRequireDefault(_Autosuggest);
 
-var _reactRouterDom = __webpack_require__(11);
+var _reactRouterDom = __webpack_require__(10);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -14653,7 +14645,7 @@ var _reactDom = __webpack_require__(36);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _reactRouterDom = __webpack_require__(11);
+var _reactRouterDom = __webpack_require__(10);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -14793,6 +14785,7 @@ var SearchResult = function (_React$Component) {
             //add to user
             // AppActions.addDestination(this.props.id);
             //add to trip
+
             AppActions.addDestination(this.props.id, this.props.tripID);
         }
     }, {
@@ -14907,6 +14900,8 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactRouterDom = __webpack_require__(10);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -14925,15 +14920,15 @@ var _class = function (_React$Component) {
     }
 
     _createClass(_class, [{
-        key: 'componentWillMount',
+        key: "componentWillMount",
         value: function componentWillMount() {}
     }, {
-        key: 'setTripID',
+        key: "setTripID",
         value: function setTripID() {
             this.props.selectTrip(this.props.id);
         }
     }, {
-        key: 'render',
+        key: "render",
         value: function render() {
             var datecreated = this.props.datecreated;
 
@@ -14945,38 +14940,38 @@ var _class = function (_React$Component) {
             }
 
             return _react2.default.createElement(
-                'div',
-                { className: 'col-10 mt-4' },
+                "div",
+                { className: "col-10 mt-4" },
                 _react2.default.createElement(
-                    'div',
-                    { className: 'trip-card card' },
+                    "div",
+                    { className: "trip-card card" },
                     _react2.default.createElement(
-                        'div',
-                        { className: 'card-header' },
+                        "div",
+                        { className: "card-header" },
                         _react2.default.createElement(
-                            'span',
-                            { className: 'h5' },
+                            "span",
+                            { className: "h5" },
                             this.props.name
                         ),
                         _react2.default.createElement(
-                            'span',
-                            { className: 'float-right' },
+                            "span",
+                            { className: "float-right" },
                             this.props.destinations.length,
-                            ' stops'
+                            " stops"
                         ),
                         _react2.default.createElement(
-                            'p',
-                            { className: 'text-muted' },
+                            "p",
+                            { className: "text-muted" },
                             dateFormatted
                         )
                     ),
                     _react2.default.createElement(
-                        'div',
-                        { className: 'card-block' },
+                        "div",
+                        { className: "card-block" },
                         _react2.default.createElement(
-                            'button',
-                            { className: 'btn btn-primary', onClick: this.setTripID.bind(this) },
-                            'select'
+                            _reactRouterDom.Link,
+                            { className: "btn btn-primary", to: "/plan/" + this.props.id },
+                            "select plan"
                         )
                     )
                 )
@@ -15213,7 +15208,7 @@ var _reactDom = __webpack_require__(36);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _reactRouterDom = __webpack_require__(11);
+var _reactRouterDom = __webpack_require__(10);
 
 var _Layout = __webpack_require__(82);
 
@@ -16164,7 +16159,7 @@ module.exports = BeforeInputEventPlugin;
 
 var CSSProperty = __webpack_require__(88);
 var ExecutionEnvironment = __webpack_require__(7);
-var ReactInstrumentation = __webpack_require__(10);
+var ReactInstrumentation = __webpack_require__(11);
 
 var camelizeStyleName = __webpack_require__(218);
 var dangerousStyleValue = __webpack_require__(208);
@@ -17462,7 +17457,7 @@ var ReactComponentEnvironment = __webpack_require__(55);
 var ReactCurrentOwner = __webpack_require__(15);
 var ReactErrorUtils = __webpack_require__(56);
 var ReactInstanceMap = __webpack_require__(33);
-var ReactInstrumentation = __webpack_require__(10);
+var ReactInstrumentation = __webpack_require__(11);
 var ReactNodeTypes = __webpack_require__(98);
 var ReactReconciler = __webpack_require__(26);
 
@@ -18449,7 +18444,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 if (process.env.NODE_ENV !== 'production') {
-  var ReactInstrumentation = __webpack_require__(10);
+  var ReactInstrumentation = __webpack_require__(11);
   var ReactDOMUnknownPropertyHook = __webpack_require__(174);
   var ReactDOMNullInputValuePropHook = __webpack_require__(168);
   var ReactDOMInvalidARIAHook = __webpack_require__(167);
@@ -18499,7 +18494,7 @@ var ReactDOMInput = __webpack_require__(166);
 var ReactDOMOption = __webpack_require__(169);
 var ReactDOMSelect = __webpack_require__(92);
 var ReactDOMTextarea = __webpack_require__(172);
-var ReactInstrumentation = __webpack_require__(10);
+var ReactInstrumentation = __webpack_require__(11);
 var ReactMultiChild = __webpack_require__(185);
 var ReactServerRenderingTransaction = __webpack_require__(190);
 
@@ -21966,7 +21961,7 @@ var _prodInvariant = __webpack_require__(4);
 
 var ReactComponentEnvironment = __webpack_require__(55);
 var ReactInstanceMap = __webpack_require__(33);
-var ReactInstrumentation = __webpack_require__(10);
+var ReactInstrumentation = __webpack_require__(11);
 
 var ReactCurrentOwner = __webpack_require__(15);
 var ReactReconciler = __webpack_require__(26);
@@ -22555,7 +22550,7 @@ var CallbackQueue = __webpack_require__(89);
 var PooledClass = __webpack_require__(21);
 var ReactBrowserEventEmitter = __webpack_require__(38);
 var ReactInputSelection = __webpack_require__(96);
-var ReactInstrumentation = __webpack_require__(10);
+var ReactInstrumentation = __webpack_require__(11);
 var Transaction = __webpack_require__(40);
 var ReactUpdateQueue = __webpack_require__(57);
 
@@ -22831,7 +22826,7 @@ var _assign = __webpack_require__(6);
 
 var PooledClass = __webpack_require__(21);
 var Transaction = __webpack_require__(40);
-var ReactInstrumentation = __webpack_require__(10);
+var ReactInstrumentation = __webpack_require__(11);
 var ReactServerUpdateQueue = __webpack_require__(191);
 
 /**

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 
 export default class extends React.Component {
     constructor(props)
@@ -31,7 +32,8 @@ export default class extends React.Component {
                         <p className="text-muted">{dateFormatted}</p>
                     </div>
                    <div className="card-block">
-                    <button className="btn btn-primary" onClick={this.setTripID.bind(this)}>select</button>
+                    {/*<button className="btn btn-primary" onClick={this.setTripID.bind(this)}>select</button>*/}
+                    <Link className="btn btn-primary" to={"/plan/"+this.props.id}>select plan</Link>
                    </div>
                 </div>
             </div>
