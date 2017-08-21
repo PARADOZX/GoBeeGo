@@ -12,7 +12,6 @@ export default class extends React.Component {
             search : "",
             suggestions : [],
         };
-
     }
     componentWillMount()
     {
@@ -61,7 +60,6 @@ export default class extends React.Component {
         const {suggestions} = this.state;
         
         const suggestionsList = suggestions.map((sugg, i)=><option key={i} value={sugg}/>);
-        
         return (
             <div>
                 <section className="mb-3">
@@ -72,7 +70,7 @@ export default class extends React.Component {
                         onKeyUpHandler={this.autocompleteGen.bind(this)} 
                         val={this.state.search} 
                         nameVal="search" />
-                    <Link className="btn btn-primary" to={"/businessSearchResults/"+this.state.search}>Search</Link>
+                    <Link className="btn btn-primary" to={"/businessSearchResults/"+this.state.search+"/"+this.props.manualLocData}>Search</Link>
                 </section>
             </div>
         )

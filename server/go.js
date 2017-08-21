@@ -18,6 +18,13 @@ const app = express();
 //dev purposes.  prod will be hosted by bluehost and app server on heroku
 app.use(serveStatic(path.join(__dirname, '../public')));
 
+//enable CORS
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 //passport local strategy definitions
 passport.serializeUser(require('./passport/serialize').serializeUser);
 passport.deserializeUser(require('./passport/serialize').deserializeUser);

@@ -126,7 +126,7 @@ export default class extends React.Component {
                         />
                         {/*<Route path="/plan/:id" component={Plan} />*/}
                         
-                        <Route path="/businessSearchResults/:id" render={ ()=>{
+                        <Route path="/businessSearchResults/:id/:manualLocData?" render={ ()=>{
                                 return <BusinessSearchResults tripID={this.state.tripID} />
                             }
                         }

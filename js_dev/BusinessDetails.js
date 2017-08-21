@@ -24,6 +24,10 @@ export default class extends React.Component {
         if(id !== undefined)
             this.getResultDetails(id);
     }
+    componentDidMount()
+    {
+        
+    }
     componentWillUnmount() {
         YelpCtrl.removeListener("detailsAndReviews", receiveDetailAndReviewsCallBackRef);
     }
@@ -34,6 +38,14 @@ export default class extends React.Component {
             
         temp.details = response.details.data;
         temp.reviews = response.reviews.data.reviews;
+    
+        new google.maps.Map(this.refs.map, {
+           center: {
+               lat: response.details.data.coordinates.latitude,
+               lng: response.details.data.coordinates.longitude
+           },
+           zoom: 15
+        });
             
         this.setState({
             business : temp
@@ -51,6 +63,8 @@ export default class extends React.Component {
                         <h2>{this.state.business.details.name}</h2>
                     : null
                 }
+                <div ref="map" style={{width: '400px', height: '500px'}}>
+                </div>
             </div>
         )
     }

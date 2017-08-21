@@ -1,20 +1,32 @@
 import dispatcher from "../dispatcher";
 import * as BAL from "../bal/BAL";
 
-export function searchBusinessByKeyword(searchArr, coords)
+export function searchBusinessByKeyword(searchArr, coords, manualLocData)
 {
     let promises = [];
-   
+
     for (let i = 0; i < searchArr.length; i++) {
+        
+        let params_option = {
+                search : searchArr[i]
+        }
+        
+        if(coords)
+        {
+            params_option.lat = coords.latitude;
+            params_option.long = coords.longitude;
+        }
+        
+        if(manualLocData)
+        {
+            params_option.location = manualLocData
+        }
+            
         promises.push(
             axios({
                 url: '/yelpRoutes/searchByKeyword',
                 method: 'get',
-                params: {
-                    search : searchArr[i],
-                    lat : coords.latitude,
-                    long : coords.longitude
-                }
+                params: params_option
             })
         );
     }
@@ -54,7 +66,7 @@ export function getBusinessDetailsAndReviews(id)
 {
     const business_id = id;
     let data = {};
-console.log(id);
+
     axios.all([BAL.getBusinessDetails(business_id), BAL.getBusinessReviews(business_id)])
         .then(axios.spread(function (details, reviews) {
             data.details = details;

@@ -83,17 +83,25 @@ exports.getDestinations = function(req, res){
     
     //v.2
     Trip.findById(tripID, "destinations", function(err, result){
-        var i;
-        for(i = 0; i<result.destinations.length; i++)
-        {
-            business_ids.push(ObjectId(result.destinations[i]));
+        if(err) console.log(err);
+        if(result != null){
+            var i;
+            for(i = 0; i<result.destinations.length; i++)
+            {
+                business_ids.push(ObjectId(result.destinations[i]));
+            }
+            
+            Business.find({
+                '_id': { $in: business_ids}
+            }, function(err, docs){
+                 res.send(docs);
+            });
         }
-        
-        Business.find({
-            '_id': { $in: business_ids}
-        }, function(err, docs){
-             res.send(docs);
-        });
+        else 
+        {   
+            res.status(404);
+            res.end();
+        }
     })
 }
 

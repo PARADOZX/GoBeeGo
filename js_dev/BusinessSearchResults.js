@@ -31,16 +31,21 @@ class BusinessSearchResults extends React.Component {
     }
     componentDidMount() {
         var that = this;
-        //check if html5 geolocation exists 
-        if(navigator.geolocation){
-            navigator.geolocation.getCurrentPosition(function(position) {
-                that.assignCoords(position.coords.latitude, position.coords.longitude);
-                that.searchYelp();
-            });
+        if(this.props.match.params.manualLocData === undefined) {
+            //check if html5 geolocation exists 
+            if(navigator.geolocation){
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    that.assignCoords(position.coords.latitude, position.coords.longitude);
+                    that.searchYelpByCoordinates();
+                });
+            } else {
+                alert("Geolocation is not supported by this browser.");
+                //Something here to redirect out of app.
+            }
         } else {
-            alert("Geolocation is not supported by this browser.");
-            //Something here to redirect out of app.
+            this.searchYelpByManualLocation();
         }
+        
     }
     componentWillUnmount() {
         YelpCtrl.removeListener("change", receiveResultsCallBackRef);
@@ -48,7 +53,7 @@ class BusinessSearchResults extends React.Component {
     }
     destinationAddedCallBack()
     {
-        this.props.history.push('/plan');
+        this.props.history.push('/plan/' + this.props.tripID);
     }
     receiveResultsCallBack()
     {
@@ -59,12 +64,23 @@ class BusinessSearchResults extends React.Component {
             results : parsedResults
         });
     }
-    searchYelp()
+    searchYelpByCoordinates()
     {
         const search = this.props.match.params.id;
         let tempSearchArr = [];
         if(search !== undefined) tempSearchArr.push(search);
-        YelpActions.searchBusinessByKeyword(tempSearchArr, this.coords);
+        
+        YelpActions.searchBusinessByKeyword(tempSearchArr, this.coords, false);
+    }
+    searchYelpByManualLocation()
+    {
+        const search = this.props.match.params.id;
+        let tempSearchArr = [];
+        if(search !== undefined) tempSearchArr.push(search);
+        
+        const manualLocData = this.props.match.params.manualLocData;
+        
+        YelpActions.searchBusinessByKeyword(tempSearchArr, false, manualLocData);
     }
     assignCoords(lat, long)
     {

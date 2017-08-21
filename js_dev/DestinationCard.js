@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 
 export default class extends React.Component {
     constructor(props)
@@ -9,7 +10,6 @@ export default class extends React.Component {
     }
     componentWillMount()
     {
-        console.log(this.props.tripID);
     }
     componentDidMount()
     {
@@ -18,9 +18,16 @@ export default class extends React.Component {
     render(){
         
         return (
-            <div>
-               Desitination card
-               {this.props.name}
+            <div className="col-10 mt-4">
+                <div className="destination-card card">
+                    <div className="card-header">
+                        <span style={{width:'50px', paddingRight: '10px'}}>{this.props.place}</span>
+                        <span className="h5">{this.props.name}</span>
+                    </div>
+                    <div className="card-block">
+                        <Link className="btn btn-primary" to={"/home"}>details</Link>
+                   </div>
+               </div>
             </div>
         )
     }

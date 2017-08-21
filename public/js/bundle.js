@@ -790,6 +790,65 @@ module.exports = ExecutionEnvironment;
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__BrowserRouter__ = __webpack_require__(234);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "BrowserRouter", function() { return __WEBPACK_IMPORTED_MODULE_0__BrowserRouter__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__HashRouter__ = __webpack_require__(235);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "HashRouter", function() { return __WEBPACK_IMPORTED_MODULE_1__HashRouter__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Link__ = __webpack_require__(114);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Link", function() { return __WEBPACK_IMPORTED_MODULE_2__Link__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__MemoryRouter__ = __webpack_require__(236);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "MemoryRouter", function() { return __WEBPACK_IMPORTED_MODULE_3__MemoryRouter__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__NavLink__ = __webpack_require__(237);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "NavLink", function() { return __WEBPACK_IMPORTED_MODULE_4__NavLink__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Prompt__ = __webpack_require__(238);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Prompt", function() { return __WEBPACK_IMPORTED_MODULE_5__Prompt__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Redirect__ = __webpack_require__(239);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Redirect", function() { return __WEBPACK_IMPORTED_MODULE_6__Redirect__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Route__ = __webpack_require__(240);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Route", function() { return __WEBPACK_IMPORTED_MODULE_7__Route__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Router__ = __webpack_require__(241);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Router", function() { return __WEBPACK_IMPORTED_MODULE_8__Router__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__StaticRouter__ = __webpack_require__(242);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "StaticRouter", function() { return __WEBPACK_IMPORTED_MODULE_9__StaticRouter__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__Switch__ = __webpack_require__(243);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Switch", function() { return __WEBPACK_IMPORTED_MODULE_10__Switch__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__matchPath__ = __webpack_require__(244);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "matchPath", function() { return __WEBPACK_IMPORTED_MODULE_11__matchPath__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__withRouter__ = __webpack_require__(245);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "withRouter", function() { return __WEBPACK_IMPORTED_MODULE_12__withRouter__["a"]; });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/***/ }),
+/* 9 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__MemoryRouter__ = __webpack_require__(253);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "MemoryRouter", function() { return __WEBPACK_IMPORTED_MODULE_0__MemoryRouter__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Prompt__ = __webpack_require__(254);
@@ -828,7 +887,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1166,65 +1225,6 @@ var ReactComponentTreeHook = {
 
 module.exports = ReactComponentTreeHook;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
-
-/***/ }),
-/* 10 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__BrowserRouter__ = __webpack_require__(234);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "BrowserRouter", function() { return __WEBPACK_IMPORTED_MODULE_0__BrowserRouter__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__HashRouter__ = __webpack_require__(235);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "HashRouter", function() { return __WEBPACK_IMPORTED_MODULE_1__HashRouter__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Link__ = __webpack_require__(114);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Link", function() { return __WEBPACK_IMPORTED_MODULE_2__Link__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__MemoryRouter__ = __webpack_require__(236);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "MemoryRouter", function() { return __WEBPACK_IMPORTED_MODULE_3__MemoryRouter__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__NavLink__ = __webpack_require__(237);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "NavLink", function() { return __WEBPACK_IMPORTED_MODULE_4__NavLink__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Prompt__ = __webpack_require__(238);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Prompt", function() { return __WEBPACK_IMPORTED_MODULE_5__Prompt__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Redirect__ = __webpack_require__(239);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Redirect", function() { return __WEBPACK_IMPORTED_MODULE_6__Redirect__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Route__ = __webpack_require__(240);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Route", function() { return __WEBPACK_IMPORTED_MODULE_7__Route__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Router__ = __webpack_require__(241);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Router", function() { return __WEBPACK_IMPORTED_MODULE_8__Router__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__StaticRouter__ = __webpack_require__(242);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "StaticRouter", function() { return __WEBPACK_IMPORTED_MODULE_9__StaticRouter__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__Switch__ = __webpack_require__(243);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Switch", function() { return __WEBPACK_IMPORTED_MODULE_10__Switch__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__matchPath__ = __webpack_require__(244);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "matchPath", function() { return __WEBPACK_IMPORTED_MODULE_11__matchPath__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__withRouter__ = __webpack_require__(245);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "withRouter", function() { return __WEBPACK_IMPORTED_MODULE_12__withRouter__["a"]; });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /***/ }),
 /* 11 */
@@ -2806,18 +2806,28 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function searchBusinessByKeyword(searchArr, coords) {
+function searchBusinessByKeyword(searchArr, coords, manualLocData) {
     var promises = [];
 
     for (var i = 0; i < searchArr.length; i++) {
+
+        var params_option = {
+            search: searchArr[i]
+        };
+
+        if (coords) {
+            params_option.lat = coords.latitude;
+            params_option.long = coords.longitude;
+        }
+
+        if (manualLocData) {
+            params_option.location = manualLocData;
+        }
+
         promises.push(axios({
             url: '/yelpRoutes/searchByKeyword',
             method: 'get',
-            params: {
-                search: searchArr[i],
-                lat: coords.latitude,
-                long: coords.longitude
-            }
+            params: params_option
         }));
     }
 
@@ -2851,7 +2861,7 @@ function sortBusinessResults() {
 function getBusinessDetailsAndReviews(id) {
     var business_id = id;
     var data = {};
-    console.log(id);
+
     axios.all([BAL.getBusinessDetails(business_id), BAL.getBusinessReviews(business_id)]).then(axios.spread(function (details, reviews) {
         data.details = details;
         data.reviews = reviews;
@@ -5876,7 +5886,7 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(10);
+var _reactRouterDom = __webpack_require__(8);
 
 var _AuthActions = __webpack_require__(28);
 
@@ -8945,7 +8955,7 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(10);
+var _reactRouterDom = __webpack_require__(8);
 
 var _Nav = __webpack_require__(85);
 
@@ -9174,7 +9184,7 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(10);
+var _reactRouterDom = __webpack_require__(8);
 
 var _AuthActions = __webpack_require__(28);
 
@@ -12719,7 +12729,7 @@ module.exports = REACT_ELEMENT_TYPE;
 
 
 var ReactCurrentOwner = __webpack_require__(15);
-var ReactComponentTreeHook = __webpack_require__(9);
+var ReactComponentTreeHook = __webpack_require__(10);
 var ReactElement = __webpack_require__(22);
 
 var checkReactTypeSpec = __webpack_require__(279);
@@ -13074,9 +13084,9 @@ var _reactDom = __webpack_require__(36);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _reactRouterDom = __webpack_require__(10);
+var _reactRouterDom = __webpack_require__(8);
 
-var _reactRouter = __webpack_require__(8);
+var _reactRouter = __webpack_require__(9);
 
 var _Login = __webpack_require__(48);
 
@@ -13240,7 +13250,7 @@ var _class = function (_React$Component) {
                                 return _react2.default.createElement(_Plan2.default, _extends({}, props, { setTripID: _this3.setTripID.bind(_this3) }));
                             }
                         }),
-                        _react2.default.createElement(_reactRouterDom.Route, { path: "/businessSearchResults/:id", render: function render() {
+                        _react2.default.createElement(_reactRouterDom.Route, { path: "/businessSearchResults/:id/:manualLocData?", render: function render() {
                                 return _react2.default.createElement(_BusinessSearchResults2.default, { tripID: _this3.state.tripID });
                             }
                         }),
@@ -13320,6 +13330,9 @@ var _class = function (_React$Component) {
             if (id !== undefined) this.getResultDetails(id);
         }
     }, {
+        key: "componentDidMount",
+        value: function componentDidMount() {}
+    }, {
         key: "componentWillUnmount",
         value: function componentWillUnmount() {
             _YelpCtrl2.default.removeListener("detailsAndReviews", receiveDetailAndReviewsCallBackRef);
@@ -13332,6 +13345,14 @@ var _class = function (_React$Component) {
 
             temp.details = response.details.data;
             temp.reviews = response.reviews.data.reviews;
+
+            new google.maps.Map(this.refs.map, {
+                center: {
+                    lat: response.details.data.coordinates.latitude,
+                    lng: response.details.data.coordinates.longitude
+                },
+                zoom: 15
+            });
 
             this.setState({
                 business: temp
@@ -13352,7 +13373,8 @@ var _class = function (_React$Component) {
                     "h2",
                     null,
                     this.state.business.details.name
-                ) : null
+                ) : null,
+                _react2.default.createElement("div", { ref: "map", style: { width: '400px', height: '500px' } })
             );
         }
     }]);
@@ -13503,7 +13525,7 @@ var _PlanStore = __webpack_require__(87);
 
 var _PlanStore2 = _interopRequireDefault(_PlanStore);
 
-var _reactRouterDom = __webpack_require__(10);
+var _reactRouterDom = __webpack_require__(8);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -13549,15 +13571,19 @@ var BusinessSearchResults = function (_React$Component) {
         key: "componentDidMount",
         value: function componentDidMount() {
             var that = this;
-            //check if html5 geolocation exists 
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function (position) {
-                    that.assignCoords(position.coords.latitude, position.coords.longitude);
-                    that.searchYelp();
-                });
+            if (this.props.match.params.manualLocData === undefined) {
+                //check if html5 geolocation exists 
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(function (position) {
+                        that.assignCoords(position.coords.latitude, position.coords.longitude);
+                        that.searchYelpByCoordinates();
+                    });
+                } else {
+                    alert("Geolocation is not supported by this browser.");
+                    //Something here to redirect out of app.
+                }
             } else {
-                alert("Geolocation is not supported by this browser.");
-                //Something here to redirect out of app.
+                this.searchYelpByManualLocation();
             }
         }
     }, {
@@ -13569,7 +13595,7 @@ var BusinessSearchResults = function (_React$Component) {
     }, {
         key: "destinationAddedCallBack",
         value: function destinationAddedCallBack() {
-            this.props.history.push('/plan');
+            this.props.history.push('/plan/' + this.props.tripID);
         }
     }, {
         key: "receiveResultsCallBack",
@@ -13582,12 +13608,24 @@ var BusinessSearchResults = function (_React$Component) {
             });
         }
     }, {
-        key: "searchYelp",
-        value: function searchYelp() {
+        key: "searchYelpByCoordinates",
+        value: function searchYelpByCoordinates() {
             var search = this.props.match.params.id;
             var tempSearchArr = [];
             if (search !== undefined) tempSearchArr.push(search);
-            YelpActions.searchBusinessByKeyword(tempSearchArr, this.coords);
+
+            YelpActions.searchBusinessByKeyword(tempSearchArr, this.coords, false);
+        }
+    }, {
+        key: "searchYelpByManualLocation",
+        value: function searchYelpByManualLocation() {
+            var search = this.props.match.params.id;
+            var tempSearchArr = [];
+            if (search !== undefined) tempSearchArr.push(search);
+
+            var manualLocData = this.props.match.params.manualLocData;
+
+            YelpActions.searchBusinessByKeyword(tempSearchArr, false, manualLocData);
         }
     }, {
         key: "assignCoords",
@@ -13925,6 +13963,8 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactRouterDom = __webpack_require__(8);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -13946,22 +13986,45 @@ var _class = function (_React$Component) {
     }
 
     _createClass(_class, [{
-        key: 'componentWillMount',
-        value: function componentWillMount() {
-            console.log(this.props.tripID);
-        }
+        key: "componentWillMount",
+        value: function componentWillMount() {}
     }, {
-        key: 'componentDidMount',
+        key: "componentDidMount",
         value: function componentDidMount() {}
     }, {
-        key: 'render',
+        key: "render",
         value: function render() {
 
             return _react2.default.createElement(
-                'div',
-                null,
-                'Desitination card',
-                this.props.name
+                "div",
+                { className: "col-10 mt-4" },
+                _react2.default.createElement(
+                    "div",
+                    { className: "destination-card card" },
+                    _react2.default.createElement(
+                        "div",
+                        { className: "card-header" },
+                        _react2.default.createElement(
+                            "span",
+                            { style: { width: '50px', paddingRight: '10px' } },
+                            this.props.place
+                        ),
+                        _react2.default.createElement(
+                            "span",
+                            { className: "h5" },
+                            this.props.name
+                        )
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        { className: "card-block" },
+                        _react2.default.createElement(
+                            _reactRouterDom.Link,
+                            { className: "btn btn-primary", to: "/home" },
+                            "details"
+                        )
+                    )
+                )
             );
         }
     }]);
@@ -14042,7 +14105,7 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(10);
+var _reactRouterDom = __webpack_require__(8);
 
 var _SearchPage = __webpack_require__(138);
 
@@ -14060,15 +14123,28 @@ var _YelpActions = __webpack_require__(24);
 
 var YelpActions = _interopRequireWildcard(_YelpActions);
 
+var _MapActions = __webpack_require__(286);
+
+var MapActions = _interopRequireWildcard(_MapActions);
+
+var _BAL = __webpack_require__(49);
+
+var BAL = _interopRequireWildcard(_BAL);
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var placeholder = document.createElement("li");
+placeholder.className = "placeholder";
 
 var _class = function (_React$Component) {
     _inherits(_class, _React$Component);
@@ -14079,10 +14155,13 @@ var _class = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, props));
 
         _this.state = {
-            destinations: []
+            destinations: [],
+            useGPS: true,
+            manualLocation: "",
+            manualLocData: "",
+            changeLocClicked: false,
+            data: ["Red", "Green", "Blue", "Yellow", "Black", "White", "Orange"]
         };
-        _this.coords = {};
-
         return _this;
     }
 
@@ -14095,37 +14174,137 @@ var _class = function (_React$Component) {
                 that.setState({
                     destinations: response.data
                 });
+                console.log(that.state.destinations);
+                // MapActions.distanceMatrixCalc();
+            }).catch(function (error) {
+                //axios error handling does not catch 404.  this is an axios bug
+                console.log(error);
             });
 
             this.props.setTripID(this.props.match.params.id);
         }
     }, {
-        key: 'componentDidMount',
-        value: function componentDidMount() {
-            var that = this;
-            //check if html5 geolocation exists 
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function (position) {
-                    that.assignCoords(position.coords.latitude, position.coords.longitude);
-                });
-            } else {
-                alert("Geolocation is not supported by this browser.");
-                //Something here to redirect out of app.
+        key: 'onHandleChange',
+        value: function onHandleChange(event) {
+            var target = event.target;
+            var name = target.name;
+            var value = target.value;
+
+            this.setState(_defineProperty({}, name, value));
+        }
+    }, {
+        key: 'cancelEnterManualLoc',
+        value: function cancelEnterManualLoc() {
+            this.setState({
+                changeLocClicked: false
+            });
+        }
+    }, {
+        key: 'dragStart',
+        value: function dragStart(e) {
+            this.dragged = e.currentTarget;
+            e.dataTransfer.effectAllowed = 'move';
+            // Firefox requires dataTransfer data to be set
+            e.dataTransfer.setData("text/html", e.currentTarget);
+        }
+    }, {
+        key: 'dragEnd',
+        value: function dragEnd(e) {
+
+            this.dragged.style.display = "block";
+            this.dragged.parentNode.removeChild(placeholder);
+            // Update data
+            var data = this.state.data;
+            var from = Number(this.dragged.dataset.id);
+            var to = Number(this.over.dataset.id);
+            if (from < to) to--;
+            if (this.nodePlacement == "after") to++;
+            data.splice(to, 0, data.splice(from, 1)[0]);
+            this.setState({ data: data });
+        }
+    }, {
+        key: 'dragOver',
+        value: function dragOver(e) {
+            e.preventDefault();
+            this.dragged.style.display = "none";
+            if (e.target.className == "placeholder") return;
+            this.over = e.target;
+            // Inside the dragOver method
+            var relY = e.clientY - this.over.offsetTop;
+            var height = this.over.offsetHeight / 2;
+            var parent = e.target.parentNode;
+
+            if (relY > height) {
+                this.nodePlacement = "after";
+                parent.insertBefore(placeholder, e.target.nextElementSibling);
+            } else if (relY < height) {
+                this.nodePlacement = "before";
+                parent.insertBefore(placeholder, e.target);
             }
         }
     }, {
-        key: 'assignCoords',
-        value: function assignCoords(lat, long) {
-            this.coords.latitude = lat;
-            this.coords.longitude = long;
+        key: 'GMCalculateDist',
+        value: function GMCalculateDist() {}
+        //   //displays map
+        //   var directionsDisplay = new google.maps.DirectionsRenderer();
+
+        //   directionsDisplay = new google.maps.DirectionsRenderer();
+        //   var chicago = new google.maps.LatLng(41.850033, -87.6500523);
+        //   var mapOptions = {
+        //     zoom:7,
+        //     center: chicago
+        //   }
+        //   var map = new google.maps.Map(this.refs.mappy, mapOptions);
+        //   directionsDisplay.setMap(map);
+
+        //   //sets waypoints on map above
+        //   var directionsService = new google.maps.DirectionsService();
+        //   var request = {
+        //     origin: 'Rockville, MD',
+        //     destination: 'Baltimore, MD',
+        //     travelMode: 'DRIVING',
+        //   };
+        //   directionsService.route(request, function(result, status) {
+        //     if (status == 'OK') {
+        //         //console.log(result);
+        //       directionsDisplay.setDirections(result);
+        //     }
+        //   });
+
+        //save manual location
+
+    }, {
+        key: 'setManualLocation',
+        value: function setManualLocation() {
+            this.setState({
+                manualLocData: this.state.manualLocation,
+                changeLocClicked: false
+            });
         }
     }, {
-        key: 'destinationAdded',
-        value: function destinationAdded() {}
+        key: 'setCurrentLocation',
+        value: function setCurrentLocation() {
+            this.setState({
+                manualLocData: "",
+                changeLocClicked: false
+            });
+        }
+        //show change location div
+
+    }, {
+        key: 'showChangeLoc',
+        value: function showChangeLoc() {
+            this.setState({
+                manualLocation: "",
+                changeLocClicked: true,
+                saveLocClicked: false
+            });
+        }
     }, {
         key: 'render',
         value: function render() {
             var destinations = this.state.destinations;
+            var manualLocData = this.state.manualLocData;
 
             var tripID = this.props.match.params.id;
             var destinationsList = null;
@@ -14135,20 +14314,96 @@ var _class = function (_React$Component) {
                     return _react2.default.createElement(_DestinationCard2.default, {
                         key: i,
                         name: r.name,
-                        tripID: tripID
+                        tripID: tripID,
+                        place: i + 1
                     });
                 });
             }
+
+            var changeLocDivClass = this.state.changeLocClicked ? 'yes-display' : 'no-display';
+            var locDefaultDivClass = this.state.changeLocClicked ? 'no-display' : 'yes-display';
 
             return _react2.default.createElement(
                 'div',
                 null,
                 _react2.default.createElement(
+                    'ul',
+                    { onDragOver: this.dragOver.bind(this) },
+                    this.state.data.map(function (item, i) {
+                        return _react2.default.createElement(
+                            'li',
+                            {
+                                'data-id': i,
+                                key: i,
+                                draggable: 'true',
+                                onDragEnd: this.dragEnd.bind(this),
+                                onDragStart: this.dragStart.bind(this)
+                            },
+                            item
+                        );
+                    }, this)
+                ),
+                _react2.default.createElement(
+                    'h3',
+                    null,
+                    'Trip Summary'
+                ),
+                _react2.default.createElement('p', null),
+                _react2.default.createElement('div', { id: 'mappy', style: { width: '400px', height: '400px' }, ref: 'mappy' }),
+                _react2.default.createElement(
                     'p',
                     { className: 'page-title' },
                     'Add Destination'
                 ),
-                _react2.default.createElement(_SearchPage2.default, { coordinates: this.coords }),
+                _react2.default.createElement(
+                    'div',
+                    { className: locDefaultDivClass },
+                    _react2.default.createElement(
+                        'p',
+                        null,
+                        manualLocData == "" ? _react2.default.createElement(
+                            'span',
+                            null,
+                            'Current Location'
+                        ) : manualLocData,
+                        _react2.default.createElement(
+                            'span',
+                            { className: 'clickable', onClick: this.showChangeLoc.bind(this) },
+                            'Change Location'
+                        )
+                    )
+                ),
+                _react2.default.createElement(
+                    'div',
+                    { className: changeLocDivClass },
+                    _react2.default.createElement(
+                        'p',
+                        null,
+                        'Specify Location'
+                    ),
+                    manualLocData == "" ? null : _react2.default.createElement(
+                        'p',
+                        null,
+                        _react2.default.createElement('input', { type: 'checkbox', onChange: this.setCurrentLocation.bind(this) }),
+                        ' Use Current Location'
+                    ),
+                    _react2.default.createElement('input', { className: 'input-control-xs', placeholder: 'enter location (eg. zip code, city, state)', type: 'text', onChange: this.onHandleChange.bind(this), value: this.state.manualLocation, name: 'manualLocation' }),
+                    _react2.default.createElement(
+                        'button',
+                        { onClick: this.setManualLocation.bind(this) },
+                        'set location'
+                    ),
+                    _react2.default.createElement(
+                        'p',
+                        null,
+                        _react2.default.createElement(
+                            'span',
+                            { onClick: this.cancelEnterManualLoc.bind(this) },
+                            'cancel'
+                        )
+                    )
+                ),
+                _react2.default.createElement(_SearchPage2.default, { manualLocData: manualLocData }),
                 _react2.default.createElement(
                     _reactRouterDom.Link,
                     { to: '/plan/somewhere' },
@@ -14162,9 +14417,18 @@ var _class = function (_React$Component) {
                         );
                     } }),
                 _react2.default.createElement(
-                    'div',
-                    { className: 'row' },
-                    destinationsList
+                    'section',
+                    null,
+                    _react2.default.createElement(
+                        'h4',
+                        null,
+                        'Destinations'
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'row' },
+                        destinationsList
+                    )
                 )
             );
         }
@@ -14200,7 +14464,7 @@ var _AuthCtrl = __webpack_require__(29);
 
 var _AuthCtrl2 = _interopRequireDefault(_AuthCtrl);
 
-var _reactRouterDom = __webpack_require__(10);
+var _reactRouterDom = __webpack_require__(8);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -14438,7 +14702,7 @@ var _reactDom = __webpack_require__(36);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _reactRouterDom = __webpack_require__(10);
+var _reactRouterDom = __webpack_require__(8);
 
 var _Home = __webpack_require__(47);
 
@@ -14507,7 +14771,7 @@ var _Autosuggest = __webpack_require__(84);
 
 var _Autosuggest2 = _interopRequireDefault(_Autosuggest);
 
-var _reactRouterDom = __webpack_require__(10);
+var _reactRouterDom = __webpack_require__(8);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -14533,7 +14797,6 @@ var _class = function (_React$Component) {
             search: "",
             suggestions: []
         };
-
         return _this;
     }
 
@@ -14583,7 +14846,6 @@ var _class = function (_React$Component) {
             var suggestionsList = suggestions.map(function (sugg, i) {
                 return _react2.default.createElement("option", { key: i, value: sugg });
             });
-
             return _react2.default.createElement(
                 "div",
                 null,
@@ -14599,7 +14861,7 @@ var _class = function (_React$Component) {
                         nameVal: "search" }),
                     _react2.default.createElement(
                         _reactRouterDom.Link,
-                        { className: "btn btn-primary", to: "/businessSearchResults/" + this.state.search },
+                        { className: "btn btn-primary", to: "/businessSearchResults/" + this.state.search + "/" + this.props.manualLocData },
                         "Search"
                     )
                 )
@@ -14645,7 +14907,7 @@ var _reactDom = __webpack_require__(36);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _reactRouterDom = __webpack_require__(10);
+var _reactRouterDom = __webpack_require__(8);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -14900,7 +15162,7 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(10);
+var _reactRouterDom = __webpack_require__(8);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -15208,7 +15470,7 @@ var _reactDom = __webpack_require__(36);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _reactRouterDom = __webpack_require__(10);
+var _reactRouterDom = __webpack_require__(8);
 
 var _Layout = __webpack_require__(82);
 
@@ -17270,7 +17532,7 @@ if (typeof process !== 'undefined' && process.env && process.env.NODE_ENV === 't
   // https://github.com/facebook/react/issues/7240
   // Remove the inline requires when we don't need them anymore:
   // https://github.com/facebook/react/pull/7178
-  ReactComponentTreeHook = __webpack_require__(9);
+  ReactComponentTreeHook = __webpack_require__(10);
 }
 
 function instantiateChild(childInstances, child, name, selfDebugID) {
@@ -17278,7 +17540,7 @@ function instantiateChild(childInstances, child, name, selfDebugID) {
   var keyUnique = childInstances[name] === undefined;
   if (process.env.NODE_ENV !== 'production') {
     if (!ReactComponentTreeHook) {
-      ReactComponentTreeHook = __webpack_require__(9);
+      ReactComponentTreeHook = __webpack_require__(10);
     }
     if (!keyUnique) {
       process.env.NODE_ENV !== 'production' ? warning(false, 'flattenChildren(...): Encountered two children with the same key, ' + '`%s`. Child keys must be unique; when two children share a key, only ' + 'the first child will be used.%s', KeyEscapeUtils.unescape(name), ReactComponentTreeHook.getStackAddendumByID(selfDebugID)) : void 0;
@@ -19940,7 +20202,7 @@ module.exports = ReactDOMInput;
 
 
 var DOMProperty = __webpack_require__(18);
-var ReactComponentTreeHook = __webpack_require__(9);
+var ReactComponentTreeHook = __webpack_require__(10);
 
 var warning = __webpack_require__(3);
 
@@ -20038,7 +20300,7 @@ module.exports = ReactDOMInvalidARIAHook;
 
 
 
-var ReactComponentTreeHook = __webpack_require__(9);
+var ReactComponentTreeHook = __webpack_require__(10);
 
 var warning = __webpack_require__(3);
 
@@ -20913,7 +21175,7 @@ module.exports = {
 
 var DOMProperty = __webpack_require__(18);
 var EventPluginRegistry = __webpack_require__(37);
-var ReactComponentTreeHook = __webpack_require__(9);
+var ReactComponentTreeHook = __webpack_require__(10);
 
 var warning = __webpack_require__(3);
 
@@ -21032,7 +21294,7 @@ module.exports = ReactDOMUnknownPropertyHook;
 
 var ReactInvalidSetStateWarningHook = __webpack_require__(183);
 var ReactHostOperationHistoryHook = __webpack_require__(181);
-var ReactComponentTreeHook = __webpack_require__(9);
+var ReactComponentTreeHook = __webpack_require__(10);
 var ExecutionEnvironment = __webpack_require__(7);
 
 var performanceNow = __webpack_require__(230);
@@ -24378,7 +24640,7 @@ if (typeof process !== 'undefined' && process.env && process.env.NODE_ENV === 't
   // https://github.com/facebook/react/issues/7240
   // Remove the inline requires when we don't need them anymore:
   // https://github.com/facebook/react/pull/7178
-  ReactComponentTreeHook = __webpack_require__(9);
+  ReactComponentTreeHook = __webpack_require__(10);
 }
 
 var loggedTypeFailures = {};
@@ -24420,7 +24682,7 @@ function checkReactTypeSpec(typeSpecs, values, location, componentName, element,
 
         if (process.env.NODE_ENV !== 'production') {
           if (!ReactComponentTreeHook) {
-            ReactComponentTreeHook = __webpack_require__(9);
+            ReactComponentTreeHook = __webpack_require__(10);
           }
           if (debugID !== null) {
             componentStackInfo = ReactComponentTreeHook.getStackAddendumByID(debugID);
@@ -24619,7 +24881,7 @@ if (typeof process !== 'undefined' && process.env && process.env.NODE_ENV === 't
   // https://github.com/facebook/react/issues/7240
   // Remove the inline requires when we don't need them anymore:
   // https://github.com/facebook/react/pull/7178
-  ReactComponentTreeHook = __webpack_require__(9);
+  ReactComponentTreeHook = __webpack_require__(10);
 }
 
 /**
@@ -24635,7 +24897,7 @@ function flattenSingleChildIntoContext(traverseContext, child, name, selfDebugID
     var keyUnique = result[name] === undefined;
     if (process.env.NODE_ENV !== 'production') {
       if (!ReactComponentTreeHook) {
-        ReactComponentTreeHook = __webpack_require__(9);
+        ReactComponentTreeHook = __webpack_require__(10);
       }
       if (!keyUnique) {
         process.env.NODE_ENV !== 'production' ? warning(false, 'flattenChildren(...): Encountered two children with the same key, ' + '`%s`. Child keys must be unique; when two children share a key, only ' + 'the first child will be used.%s', KeyEscapeUtils.unescape(name), ReactComponentTreeHook.getStackAddendumByID(selfDebugID)) : void 0;
@@ -26428,7 +26690,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_history_createBrowserHistory__ = __webpack_require__(246);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_history_createBrowserHistory___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_history_createBrowserHistory__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_router__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_router__ = __webpack_require__(9);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -26488,7 +26750,7 @@ BrowserRouter.propTypes = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_history_createHashHistory__ = __webpack_require__(247);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_history_createHashHistory___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_history_createHashHistory__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_router__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_router__ = __webpack_require__(9);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -26541,7 +26803,7 @@ HashRouter.propTypes = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router__ = __webpack_require__(9);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0_react_router__["MemoryRouter"]; });
 
 
@@ -26554,7 +26816,7 @@ HashRouter.propTypes = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_router__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_router__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Link__ = __webpack_require__(114);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -26627,7 +26889,7 @@ NavLink.defaultProps = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router__ = __webpack_require__(9);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0_react_router__["Prompt"]; });
 
 
@@ -26636,7 +26898,7 @@ NavLink.defaultProps = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router__ = __webpack_require__(9);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0_react_router__["Redirect"]; });
 
 
@@ -26645,7 +26907,7 @@ NavLink.defaultProps = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router__ = __webpack_require__(9);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0_react_router__["Route"]; });
 
 
@@ -26654,7 +26916,7 @@ NavLink.defaultProps = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router__ = __webpack_require__(9);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0_react_router__["Router"]; });
 
 
@@ -26663,7 +26925,7 @@ NavLink.defaultProps = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router__ = __webpack_require__(9);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0_react_router__["StaticRouter"]; });
 
 
@@ -26672,7 +26934,7 @@ NavLink.defaultProps = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router__ = __webpack_require__(9);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0_react_router__["Switch"]; });
 
 
@@ -26681,7 +26943,7 @@ NavLink.defaultProps = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router__ = __webpack_require__(9);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0_react_router__["matchPath"]; });
 
 
@@ -26690,7 +26952,7 @@ NavLink.defaultProps = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router__ = __webpack_require__(9);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0_react_router__["withRouter"]; });
 
 
@@ -31691,7 +31953,7 @@ if (typeof process !== 'undefined' && process.env && process.env.NODE_ENV === 't
   // https://github.com/facebook/react/issues/7240
   // Remove the inline requires when we don't need them anymore:
   // https://github.com/facebook/react/pull/7178
-  ReactComponentTreeHook = __webpack_require__(9);
+  ReactComponentTreeHook = __webpack_require__(10);
 }
 
 var loggedTypeFailures = {};
@@ -31733,7 +31995,7 @@ function checkReactTypeSpec(typeSpecs, values, location, componentName, element,
 
         if (process.env.NODE_ENV !== 'production') {
           if (!ReactComponentTreeHook) {
-            ReactComponentTreeHook = __webpack_require__(9);
+            ReactComponentTreeHook = __webpack_require__(10);
           }
           if (debugID !== null) {
             componentStackInfo = ReactComponentTreeHook.getStackAddendumByID(debugID);
@@ -32619,6 +32881,50 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 };
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 286 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.distanceMatrixCalc = distanceMatrixCalc;
+
+var _dispatcher = __webpack_require__(20);
+
+var _dispatcher2 = _interopRequireDefault(_dispatcher);
+
+var _BAL = __webpack_require__(49);
+
+var BAL = _interopRequireWildcard(_BAL);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function distanceMatrixCalc(originArr, destArr) {
+    // var origin1 = new google.maps.LatLng(55.930385, -3.118425);
+    var origin1 = 'Rockville, MD';
+    var destinationA = 'Baltimore, MD';
+    var destinationB = 'Richmond, VA';
+    // var destinationB = new google.maps.LatLng(50.087692, 14.421150);
+
+    var service = new google.maps.DistanceMatrixService();
+    service.getDistanceMatrix({
+        origins: [origin1],
+        destinations: [destinationA],
+        travelMode: 'DRIVING',
+        // transitOptions: 'DRIVING',
+        // drivingOptions: DrivingOptions,
+        unitSystem: google.maps.UnitSystem.IMPERIAL
+    }, function (response, status) {
+        console.log(response);
+    });
+}
 
 /***/ })
 /******/ ]);

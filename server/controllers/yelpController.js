@@ -22,8 +22,13 @@ exports.autocompleteGen = function(req, res){
 };
 
 exports.searchByKeyword = function(req, res){
+    var urlBuilder = 'https://api.yelp.com/v3/businesses/search?term=' + req.query.search;
+    
+    urlBuilder += req.query.location === undefined ? "&latitude=" + req.query.lat + "&longitude=" + req.query.long : "&location=" + req.query.location;
+    
     const options = {
-      url: 'https://api.yelp.com/v3/businesses/search?term=' + req.query.search + "&latitude=" + req.query.lat + "&longitude=" + req.query.long,
+    //   url: 'https://api.yelp.com/v3/businesses/search?term=' + req.query.search + "&latitude=" + req.query.lat + "&longitude=" + req.query.long,
+      url: urlBuilder,
       headers: {
         'Authorization': 'Bearer ' + config.yelp.ACCESS_TOKEN
       }
