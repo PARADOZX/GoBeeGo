@@ -82,20 +82,39 @@ exports.getDestinations = function(req, res){
     // })
     
     //v.2
+    
     Trip.findById(tripID, "destinations", function(err, result){
         if(err) console.log(err);
         if(result != null){
-            var i;
-            for(i = 0; i<result.destinations.length; i++)
-            {
-                business_ids.push(ObjectId(result.destinations[i]));
-            }
             
-            Business.find({
-                '_id': { $in: business_ids}
-            }, function(err, docs){
-                 res.send(docs);
+            var businessResults = [];
+            Business.find({'_id' : {$in : result.destinations}}, function(err, docs){
+                var i;
+                for(i=0; i < docs.length; i++)
+                {
+                    var index=result.destinations.indexOf(docs[i]._id);
+                    businessResults[index] = docs[i];
+                }
+            
+                res.send(businessResults);
             });
+            
+            
+            
+            // //redundant
+            // var i;
+            // for(i = 0; i<result.destinations.length; i++)
+            // {
+            //     business_ids.push(ObjectId(result.destinations[i]));
+            // }
+            
+            // //loses order here...
+            // Business.find({
+            //     '_id': { $in: business_ids}
+            // }, function(err, docs){
+            //   res.send(docs);
+            // });
+            
         }
         else 
         {   
@@ -148,5 +167,25 @@ exports.getTrips = function(req, res){
         if(err) throw err;
         
         res.send(tripRecords);
-    });;
+    });
+};
+
+exports.reorderDestinations = function(req, res){
+    const tripID = req.body.id;
+    const fromIndex = req.body.from;
+    const toIndex = req.body.to;
+
+    Trip.findById(tripID, function(err, trip){
+
+      var dest = trip.destinations.splice(fromIndex, 1);
+      trip.destinations.splice(toIndex+1, 0, dest[0]);
+      
+        trip.save(function (err) {
+            if(err) {
+                console.error('ERROR!');
+            }
+            res.send(true);
+        });
+      
+    });
 };

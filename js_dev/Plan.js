@@ -3,12 +3,15 @@ import { BrowserRouter as Router, HashRouter, Route, Link } from "react-router-d
 import SearchPage from './SearchPage';
 import DestinationCard from './DestinationCard';
 import PlanStore from "./stores/PlanStore";
+import * as AppActions from "./actions/AppActions";
 import * as YelpActions from "./actions/YelpActions";
 import * as MapActions from "./actions/MapActions";
 import * as BAL from "./bal/BAL";
 
 var placeholder = document.createElement("li");
 placeholder.className = "placeholder";
+
+let destinationReorderCallBackRef = null;
 
 export default class extends React.Component {
     constructor(props) {
@@ -18,9 +21,10 @@ export default class extends React.Component {
             useGPS : true,
             manualLocation: "",
             manualLocData: "",
-            changeLocClicked : false,
-            data: ["Red","Green","Blue","Yellow","Black","White","Orange"]
+            changeLocClicked : false
         };
+        
+        destinationReorderCallBackRef = this.destinationReorderCallBack.bind(this);
     }
     componentWillMount()
     {
@@ -39,8 +43,28 @@ export default class extends React.Component {
                 //axios error handling does not catch 404.  this is an axios bug
                 console.log(error);
             })
-        
+        PlanStore.on("destinations_reordered", destinationReorderCallBackRef);
         this.props.setTripID(this.props.match.params.id);
+    }
+    componentWillUnmount() {
+        PlanStore.removeListener("destinations_reordered", destinationReorderCallBackRef);
+    }
+    destinationReorderCallBack()
+    {
+        var that = this;
+        PlanStore.getDestinations(this.props.match.params.id)
+            .then(function(response){ 
+                
+                that.setState(
+                {
+                    destinations : response.data
+                }) 
+                // console.log(that.state.destinations);
+            })
+            .catch(function(error){
+                //axios error handling does not catch 404.  this is an axios bug
+                console.log(error);
+            })
     }
     onHandleChange(event)
     {
@@ -68,34 +92,71 @@ export default class extends React.Component {
     dragEnd(e) {
     
         this.dragged.style.display = "block";
-        this.dragged.parentNode.removeChild(placeholder);
-        // Update data
-        var data = this.state.data;
-        var from = Number(this.dragged.dataset.id);
-        var to = Number(this.over.dataset.id);
-        if(from < to) to--;
-        if(this.nodePlacement == "after") to++;
-        data.splice(to, 0, data.splice(from, 1)[0]);
-        this.setState({data: data});
+        // this.dragged.parentNode.removeChild(placeholder);
+        
+        //traverse to parent 'li'
+        var toLi = this.findLI(this.over);
+        
+        // // Update data
+        var data = this.state.destinations;
+        var fromIndex = Number(this.dragged.dataset.index);
+        var toIndex = Number(toLi.dataset.index);
+        
+        // if(from < to) to--;
+        // if(this.nodePlacement == "after") to++;
+        
+        console.log(fromIndex);
+        console.log(toIndex);
+        
+        AppActions.reorderDestination(this.props.match.params.id, fromIndex, toIndex);
     }
     dragOver(e) {
         e.preventDefault();
-        this.dragged.style.display = "none";
-        if(e.target.className == "placeholder") return;
-        this.over = e.target;
-        // Inside the dragOver method
-        var relY = e.clientY - this.over.offsetTop;
-        var height = this.over.offsetHeight / 2;
-        var parent = e.target.parentNode;
+        var target = e.target;
+    
+        // this.dragged.style.display = "none";
         
+        
+        if(target.className == "placeholder") return;
+        this.over = target;
+        // Inside the dragOver method
+        
+        //relY = top of target element
+        var relY = e.clientY - this.over.offsetTop;
+     
+        //height = half of the element height (including border and padding)
+        var height = this.over.offsetHeight / 2;
+        
+        var parent = target.parentNode;
+    
         if(relY > height) {
           this.nodePlacement = "after";
-          parent.insertBefore(placeholder, e.target.nextElementSibling);
+        //   console.log('after');
+        //   parent.insertBefore(placeholder, target.nextElementSibling);
         }
         else if(relY < height) {
           this.nodePlacement = "before"
-          parent.insertBefore(placeholder, e.target);
+        //   console.log('before');
+        //   parent.insertBefore(placeholder, target);
         }
+    }
+    findLI(target)
+    {
+        var parent = target.parentNode.parentNode;
+        if(parent.nodeName === "LI")
+        {
+            return parent;
+        }
+        else 
+        {
+            var gparent = parent.parentNode;
+            if(gparent.nodeName === "LI")
+            {
+                return gparent;
+            }
+            return false;
+        }
+        
     }
     GMCalculateDist()
     {
@@ -160,13 +221,36 @@ export default class extends React.Component {
         let destinationsList = null;
  
         if (destinations !== undefined){
-            destinationsList = destinations.map((r, i) => 
+            /*destinationsList = destinations.map((r, i) => 
             <DestinationCard 
                 key={i} 
                 name={r.name} 
                 tripID={tripID}
                 place={i+1}
+            />);*/
+            
+           destinationsList = destinations.map((item, i) =>
+            <DestinationCard
+                key={i}
+            	id={item._id}
+            	tripID={tripID}
+            	name={item.name}
+                place={i+1}
+                draggable="true"
+                onDragEnd={this.dragEnd.bind(this)}
+                onDragStart={this.dragStart.bind(this)}
             />);
+            
+            /*destinationsList = destinations.map((item, i) =>
+            <li
+            	data-id={i}
+                key={i}
+                draggable="true"
+                onDragEnd={this.dragEnd.bind(this)}
+                onDragStart={this.dragStart.bind(this)}
+            >
+            {item.name}
+            </li>);*/
         }
         
         const changeLocDivClass = this.state.changeLocClicked ? 'yes-display' : 'no-display';
@@ -174,21 +258,6 @@ export default class extends React.Component {
         
         return (
             <div>
-                <ul onDragOver={this.dragOver.bind(this)}>
-                	{this.state.data.map(function(item, i) {
-                  	return (
-                    	<li
-            		        data-id={i}
-                        key={i}
-                        draggable="true"
-                        onDragEnd={this.dragEnd.bind(this)}
-                        onDragStart={this.dragStart.bind(this)}
-                      >
-                   			{item}
-                      </li>
-                    )
-               	 	}, this)}
-                </ul>
                 <h3>Trip Summary</h3>
                 <p></p>
                 <div id="mappy" style={{width:'400px', height: '400px'}} ref="mappy"></div>
@@ -213,11 +282,14 @@ export default class extends React.Component {
                 <Route path="/plan/somewhere" render={() => (
                   <h3>Please select a topic.</h3>
                 )} />
-                <section>
+                <section id="destinations-section">
                     <h4>Destinations</h4>
-                    <div className="row">
+                    {/*<div className="row">
                         {destinationsList}
-                    </div>
+                    </div>*/}
+                    <ul onDragOver={this.dragOver.bind(this)}>
+                        {destinationsList}
+                    </ul>
                 </section>
             </div>
         )

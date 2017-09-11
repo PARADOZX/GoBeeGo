@@ -23,6 +23,10 @@ class PlanStore extends EventEmitter {
         });
         
     }
+    destinationsReordered()
+    {
+        this.emit("destinations_reordered");
+    }
     getDestinations(tripID)
     {
         // return this.destinations;
@@ -41,6 +45,10 @@ class PlanStore extends EventEmitter {
         {
             case "ADD_DESTINATION": {
                 this.addDestination(action);
+                break;
+            }
+            case "DESTINATIONS_REORDERED": {
+                this.destinationsReordered(action);
                 break;
             }
         }

@@ -48,3 +48,30 @@ export function createNewTrip(tripName)
         });
 }
 
+export function reorderDestination(tripID, fromIndex, toIndex)
+{
+     axios({
+            url: '/accountRoutes/reorderDestinations', 
+            data: {
+                id : tripID,
+                from : fromIndex,
+                to : toIndex
+            },
+            method: 'post'
+        })
+        .then(function(response){
+            if(response.data) {
+                dispatcher.dispatch({
+                    type: "DESTINATIONS_REORDERED"
+                })
+            } 
+            // else 
+            // {
+            //     //trip exists
+            //     dispatcher.dispatch({
+            //         type: "TRIP_ALREADY_EXISTS",
+            //         tripName: trip_name
+            //     })
+            // }
+        });
+}
