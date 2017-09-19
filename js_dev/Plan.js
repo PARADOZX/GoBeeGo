@@ -59,7 +59,6 @@ export default class extends React.Component {
                 {
                     destinations : response.data
                 }) 
-                // console.log(that.state.destinations);
             })
             .catch(function(error){
                 //axios error handling does not catch 404.  this is an axios bug
@@ -92,11 +91,10 @@ export default class extends React.Component {
     dragEnd(e) {
     
         this.dragged.style.display = "block";
-        // this.dragged.parentNode.removeChild(placeholder);
         
         //traverse to parent 'li'
         var toLi = this.findLI(this.over);
-        
+        toLi.parentNode.removeChild(placeholder);
         // // Update data
         var data = this.state.destinations;
         var fromIndex = Number(this.dragged.dataset.index);
@@ -114,30 +112,41 @@ export default class extends React.Component {
         e.preventDefault();
         var target = e.target;
     
-        // this.dragged.style.display = "none";
-        
-        
         if(target.className == "placeholder") return;
         this.over = target;
-        // Inside the dragOver method
         
-        //relY = top of target element
-        var relY = e.clientY - this.over.offsetTop;
+        // // Inside the dragOver method
+        // //relY = top of target element
+        // var relY = e.clientY - this.over.offsetTop;
      
-        //height = half of the element height (including border and padding)
-        var height = this.over.offsetHeight / 2;
+        // //height = half of the element height (including border and padding)
+        // var height = this.over.offsetHeight / 2;
         
-        var parent = target.parentNode;
+        // var parent = target.parentNode;
     
-        if(relY > height) {
-          this.nodePlacement = "after";
-        //   console.log('after');
-        //   parent.insertBefore(placeholder, target.nextElementSibling);
+        // if(relY > height) {
+        //   this.nodePlacement = "after";
+        // //   console.log('after');
+        // //   parent.insertBefore(placeholder, target.nextElementSibling);
+        // }
+        // else if(relY < height) {
+        //   this.nodePlacement = "before"
+        // //   console.log('before');
+        // //   parent.insertBefore(placeholder, target);
+        // }
+        
+        var toLi = this.findLI(this.over);
+        console.log(typeof toLi.parentNode);
+        if(typeof toLi.parentNode === "undefined")
+        {
+            console.log(target.parentNode);
+            if(target.querySelector(".placeholder") != null)
+                target.removeChild(placeholder);
         }
-        else if(relY < height) {
-          this.nodePlacement = "before"
-        //   console.log('before');
-        //   parent.insertBefore(placeholder, target);
+        else 
+        {
+            var toUl = toLi.parentNode;
+            toUl.insertBefore(placeholder, toLi.nextElementSibling);
         }
     }
     findLI(target)

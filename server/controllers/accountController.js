@@ -177,8 +177,16 @@ exports.reorderDestinations = function(req, res){
 
     Trip.findById(tripID, function(err, trip){
 
-      var dest = trip.destinations.splice(fromIndex, 1);
-      trip.destinations.splice(toIndex+1, 0, dest[0]);
+        if(toIndex < fromIndex){
+            var dest = trip.destinations.splice(fromIndex, 1);
+            trip.destinations.splice(toIndex+1, 0, dest[0]);
+        }
+      
+        if(fromIndex < toIndex){
+            var dest = trip.destinations[fromIndex];
+            trip.destinations.splice(toIndex+1, 0, dest);
+            trip.destinations.splice(fromIndex, 1);
+        } 
       
         trip.save(function (err) {
             if(err) {
