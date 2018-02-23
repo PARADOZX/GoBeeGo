@@ -2793,6 +2793,7 @@ exports.searchBusinessByKeyword = searchBusinessByKeyword;
 exports.autocompleteGen = autocompleteGen;
 exports.sortBusinessResults = sortBusinessResults;
 exports.getBusinessDetailsAndReviews = getBusinessDetailsAndReviews;
+exports.getBusinessDetails = getBusinessDetails;
 
 var _dispatcher = __webpack_require__(18);
 
@@ -2863,6 +2864,21 @@ function getBusinessDetailsAndReviews(id) {
     var data = {};
 
     axios.all([BAL.getBusinessDetails(business_id), BAL.getBusinessReviews(business_id)]).then(axios.spread(function (details, reviews) {
+        data.details = details;
+        data.reviews = reviews;
+
+        _dispatcher2.default.dispatch({
+            type: "YELP_BUSINESS_DETAILS_REVIEWS",
+            response: data
+        });
+    }));
+}
+
+function getBusinessDetails(id) {
+    var business_id = id;
+    var data = {};
+
+    axios.get(BAL.getBusinessDetails(business_id)).then(axios.spread(function (details, reviews) {
         data.details = details;
         data.reviews = reviews;
 
@@ -9478,6 +9494,19 @@ var PlanStore = function (_EventEmitter) {
             });
         }
     }, {
+        key: 'getDestinationsAndCoordinates',
+        value: function getDestinationsAndCoordinates(tripID) {
+            // return this.destinations;
+            var that = this;
+            return axios({
+                url: '/accountRoutes/getDestinationsAndCoordinates',
+                method: 'get',
+                params: {
+                    tripID: tripID
+                }
+            });
+        }
+    }, {
         key: 'handleActions',
         value: function handleActions(action) {
 
@@ -14226,9 +14255,11 @@ var _class = function (_React$Component) {
     _createClass(_class, [{
         key: 'componentWillMount',
         value: function componentWillMount() {
+            var tripID = this.props.match.params.id;
             var that = this;
-            // PlanStore.getDestinations(this.props.tripID).then(function(response){ 
-            _PlanStore2.default.getDestinations(this.props.match.params.id).then(function (response) {
+            // PlanStore.getDestinations(tripID).then(function(response){ 
+            _PlanStore2.default.getDestinationsAndCoordinates(tripID).then(function (response) {
+                console.log(response);
                 that.setState({
                     destinations: response.data
                 });

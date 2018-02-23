@@ -39,6 +39,18 @@ class PlanStore extends EventEmitter {
             }
         })
     }
+    getDestinationsAndCoordinates(tripID)
+    {
+        // return this.destinations;
+        var that = this;
+        return axios({
+            url: '/accountRoutes/getDestinationsAndCoordinates',
+            method: 'get',
+            params: {
+                tripID : tripID
+            }
+        })
+    }
     handleActions(action){
      
         switch(action.type)

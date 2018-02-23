@@ -78,3 +78,20 @@ export function getBusinessDetailsAndReviews(id)
             }) 
         }));
 }
+
+export function getBusinessDetails(id)
+{
+    const business_id = id;
+    let data = {};
+
+    axios.get(BAL.getBusinessDetails(business_id))
+        .then(axios.spread(function (details, reviews) {
+            data.details = details;
+            data.reviews = reviews;
+            
+            dispatcher.dispatch({
+                type: "YELP_BUSINESS_DETAILS_REVIEWS",
+                response : data
+            }) 
+        }));
+}

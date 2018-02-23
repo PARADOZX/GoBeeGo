@@ -1,5 +1,7 @@
 const config = require('../config/config');
 const request = require('request');
+//request doesn't support promises so using axios
+const axios = require('axios');
 
 exports.testAPI = function(req, res){
     console.log("in yelp test api controller cb");
@@ -66,6 +68,16 @@ exports.businessDetails = function(req, res) {
             console.log(error);
         }
     });
+}
+
+exports.businessDetailsPromise = function(id) {
+    return axios.get('https://api.yelp.com/v3/businesses/' + id, 
+            { 
+                headers: {'Authorization': 'Bearer ' + config.yelp.ACCESS_TOKEN}
+            })
+            .then(response => {
+                // console.log(response);
+            })
 }
 
 exports.businessReviews = function(req, res) {

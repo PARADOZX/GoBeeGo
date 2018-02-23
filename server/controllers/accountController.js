@@ -2,6 +2,8 @@ const Business = require('../models/Business');
 const User = require('../models/User');
 const Trip = require('../models/Trip');
 const ObjectId = require('mongodb').ObjectID;
+const yelpController = require('./yelpController');
+const axios = require('axios');
 
 exports.saveDestination = function(req, res){
     const payload = req.body;
@@ -82,7 +84,6 @@ exports.getDestinations = function(req, res){
     // })
     
     //v.2
-    
     Trip.findById(tripID, "destinations", function(err, result){
         if(err) console.log(err);
         if(result != null){
@@ -98,8 +99,6 @@ exports.getDestinations = function(req, res){
             
                 res.send(businessResults);
             });
-            
-            
             
             // //redundant
             // var i;
@@ -124,6 +123,67 @@ exports.getDestinations = function(req, res){
     })
 }
 
+
+exports.getDestinationsAndCoordinates = function(req, res){
+    var business_ids = [];
+    const tripID = req.query.tripID;
+    
+    const tripQuery = GetTrip(tripID);
+    tripQuery.then(function(trip){
+        const businessQuery = GetDestinations(trip);
+        businessQuery.then(function(businessResults){
+            // res.send(businessResults);
+            const coordQuery = GetCoordinates(businessResults);
+            // coordQuery.then(function(coordResults){
+            //     console.log(coordResults);
+            //     res.send(coordResults);
+            // })
+        })
+    });
+}
+
+function GetTrip(tripID){
+    return Trip.findById(tripID, "destinations", function(err, result){
+            if(err) console.log(err);
+            if(result != null){
+                return result;
+            }
+            else 
+            {   
+                res.status(404);
+                res.end();
+            }
+        })
+}
+function GetDestinations(trip)
+{
+    var businessResults = [];    
+    return Business.find({'_id' : {$in : trip.destinations}}, function(err, docs){
+        var i;
+        for(i=0; i < docs.length; i++)
+        {
+            var index=trip.destinations.indexOf(docs[i]._id);
+            businessResults[index] = docs[i];
+        }
+
+        return businessResults;
+    });
+}
+function GetCoordinates(businessResults)
+{   
+    var results = [];
+    var promises = [];
+    for(x in businessResults)
+    {
+        promises.push(yelpController.businessDetailsPromise(businessResults[x].id));
+    }
+    
+    axios.all(promises)
+        .then(axios.spread(function (acct, perms) {
+            console.log(acct);
+        }))
+        
+}
 exports.createTrip = function(req, res){
     const tripname = req.body.name.trim();
     

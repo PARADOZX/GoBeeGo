@@ -28,10 +28,12 @@ export default class extends React.Component {
     }
     componentWillMount()
     {
+        var tripID = this.props.match.params.id;
         var that = this;
-        // PlanStore.getDestinations(this.props.tripID).then(function(response){ 
-        PlanStore.getDestinations(this.props.match.params.id)
+        // PlanStore.getDestinations(tripID).then(function(response){ 
+        PlanStore.getDestinationsAndCoordinates(tripID)
             .then(function(response){ 
+                console.log(response);
                 that.setState(
                 {
                     destinations : response.data
@@ -54,7 +56,7 @@ export default class extends React.Component {
         var that = this;
         PlanStore.getDestinations(this.props.match.params.id)
             .then(function(response){ 
-                
+            
                 that.setState(
                 {
                     destinations : response.data
@@ -228,7 +230,7 @@ export default class extends React.Component {
         const {manualLocData} = this.state;
         const tripID = this.props.match.params.id;
         let destinationsList = null;
- 
+
         if (destinations !== undefined){
             /*destinationsList = destinations.map((r, i) => 
             <DestinationCard 
